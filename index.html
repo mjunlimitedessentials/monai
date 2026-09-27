@@ -1,20 +1,383 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/monai-icon-32.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/monai-icon-64.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/monai-icon-180.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/monai-icon-512.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MŌNAI | Executive AI Assistant | ThinkBox AI Studios</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-CStD9iVQ.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D6Wcob5r.css">
-  </head>
-  <body class="bg-[#0a0010] text-[#f3e8ff] antialiased selection:bg-[#7b2fff] selection:text-white min-h-screen">
-    <div id="root"></div>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MŌNAI is your AI executive assistant. One clear morning brief, drafts in your voice, and nothing goes out without your greenlight. From ThinkBox AI Studios." />
+  <meta name="theme-color" content="#0a0010" />
+  <meta property="og:title" content="MŌNAI | Your AI Executive Assistant" />
+  <meta property="og:description" content="She keeps watch over your business so you can be present for the people you built it for. Nothing goes out without your greenlight." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://monai.mjunlimitedessentialmktg.com/" />
+  <meta property="og:image" content="https://monai.mjunlimitedessentialmktg.com/monai-icon-512.png" />
+  <title>MŌNAI | Your AI Executive Assistant | ThinkBox AI Studios</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/monai-icon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/monai-icon-64.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/monai-icon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0010;
+      --bg2: #150826;
+      --ink: #f3e8ff;
+      --muted: #a895c2;
+      --purple: #7b2fff;
+      --purple-soft: #b06aff;
+      --gold: #f5c842;
+      --line: rgba(176, 106, 255, 0.22);
+      --card: rgba(123, 47, 255, 0.07);
+      --mono: 'JetBrains Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--purple); color: #fff; }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── orbs ── */
+    .orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+    .orb1 { width: 480px; height: 480px; background: rgba(123, 47, 255, 0.16); top: -120px; right: -80px; }
+    .orb2 { width: 420px; height: 420px; background: rgba(245, 200, 66, 0.05); bottom: -100px; left: -100px; }
+
+    header, section, footer { position: relative; z-index: 1; }
+
+    /* ── nav ── */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .brand img { width: 44px; height: 44px; border-radius: 12px; }
+    .brand .name { font-weight: 800; font-size: 24px; letter-spacing: 0.04em; }
+    .brand .name .o { color: var(--purple-soft); }
+    .brand .sub { display: block; font-size: 10px; letter-spacing: 0.28em; color: var(--muted); font-weight: 600; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 600; transition: color .2s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      color: #0a0010 !important; background: var(--gold); padding: 10px 20px;
+      border-radius: 999px; font-weight: 700;
+    }
+    @media (max-width: 720px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+    /* ── hero ── */
+    .hero { text-align: center; padding: 84px 0 64px; }
+    .kicker {
+      font-family: var(--mono); font-size: 12px; letter-spacing: 0.3em;
+      color: var(--gold); text-transform: uppercase; margin-bottom: 22px;
+    }
+    h1 { font-size: clamp(44px, 7vw, 84px); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; }
+    h1 .macron { color: var(--purple-soft); }
+    .hero .tag { font-size: clamp(18px, 2.6vw, 26px); color: var(--purple-soft); font-weight: 700; margin-top: 14px; }
+    .hero p.lede { max-width: 640px; margin: 22px auto 0; color: var(--muted); font-size: 18px; }
+    .hero-ctas { display: flex; gap: 16px; justify-content: center; margin-top: 36px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 16px 34px; border-radius: 999px;
+      font-weight: 700; font-size: 16px; text-decoration: none; transition: transform .15s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-gold { background: var(--gold); color: #0a0010; box-shadow: 0 8px 32px rgba(245, 200, 66, 0.25); }
+    .btn-ghost { border: 1px solid var(--line); color: var(--ink); background: var(--card); }
+    .hero-note { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 18px; letter-spacing: 0.08em; }
+
+    /* ── problem ── */
+    .problem { padding: 40px 0 56px; text-align: center; }
+    .problem .q {
+      font-size: clamp(22px, 3.4vw, 32px); font-weight: 700; max-width: 820px; margin: 0 auto;
+      color: var(--ink);
+    }
+    .problem .a { color: var(--purple-soft); font-weight: 800; margin-top: 10px; font-size: clamp(22px, 3.4vw, 32px); }
+
+    /* ── features ── */
+    .features { padding: 40px 0 72px; }
+    h2 { font-size: clamp(30px, 4.5vw, 44px); font-weight: 900; text-align: center; letter-spacing: -0.01em; }
+    .h-sub { text-align: center; color: var(--muted); max-width: 600px; margin: 14px auto 48px; font-size: 17px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+      padding: 28px 26px; transition: border-color .2s, transform .2s;
+    }
+    .card:hover { border-color: var(--purple-soft); transform: translateY(-3px); }
+    .card .num { font-family: var(--mono); font-size: 12px; color: var(--gold); letter-spacing: 0.2em; }
+    .card h3 { font-size: 20px; font-weight: 800; margin: 10px 0 8px; }
+    .card p { color: var(--muted); font-size: 15px; }
+
+    /* ── orra ── */
+    .orra { padding: 72px 0; }
+    .flow { display: flex; justify-content: center; align-items: stretch; gap: 12px; flex-wrap: wrap; margin-top: 44px; }
+    .step {
+      flex: 1 1 180px; max-width: 240px; border: 1px solid var(--line); border-radius: 18px;
+      padding: 24px 20px; background: var(--card); text-align: center; position: relative;
+    }
+    .step .glyph { font-family: var(--mono); font-size: 13px; color: var(--purple-soft); letter-spacing: 0.2em; }
+    .step h3 { font-size: 21px; font-weight: 800; margin: 8px 0 6px; }
+    .step p { font-size: 13.5px; color: var(--muted); }
+    .step.gate {
+      border-color: var(--gold); background: rgba(245, 200, 66, 0.06);
+      box-shadow: 0 0 40px rgba(245, 200, 66, 0.08);
+    }
+    .step.gate .gate-label {
+      font-family: var(--mono); font-size: 10px; color: #0a0010; background: var(--gold);
+      padding: 3px 10px; border-radius: 999px; letter-spacing: 0.18em; font-weight: 700;
+      display: inline-block; margin-bottom: 10px;
+    }
+    .arrow { align-self: center; color: var(--purple-soft); font-size: 22px; font-weight: 700; }
+    @media (max-width: 900px) { .arrow { transform: rotate(90deg); width: 100%; text-align: center; } }
+    .orra-note { text-align: center; color: var(--muted); font-size: 15px; max-width: 640px; margin: 36px auto 0; }
+    .orra-note b { color: var(--gold); }
+
+    /* ── security ── */
+    .security { padding: 72px 0; }
+    .sec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .sec-item { display: flex; gap: 12px; align-items: flex-start; border: 1px solid var(--line); border-radius: 16px; padding: 20px; background: var(--card); }
+    .sec-item .dot { color: var(--gold); font-size: 18px; line-height: 1.4; }
+    .sec-item h4 { font-size: 15.5px; font-weight: 700; }
+    .sec-item p { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
+
+    /* ── waitlist ── */
+    .waitlist { padding: 80px 0 96px; }
+    .wl-box {
+      max-width: 720px; margin: 0 auto; border: 1px solid var(--line); border-radius: 28px;
+      background: linear-gradient(160deg, rgba(123, 47, 255, 0.12), rgba(10, 0, 16, 0.4));
+      padding: 52px 40px; text-align: center;
+    }
+    .wl-box .kicker { margin-bottom: 14px; }
+    .wl-box h2 { text-align: center; }
+    .wl-box p.wl-sub { color: var(--muted); margin: 12px auto 30px; max-width: 460px; }
+    form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 520px; margin: 0 auto; }
+    input, select {
+      background: rgba(10, 0, 16, 0.7); border: 1px solid var(--line); border-radius: 12px;
+      padding: 14px 16px; color: var(--ink); font-family: inherit; font-size: 15px; outline: none;
+      transition: border-color .2s;
+    }
+    input:focus, select:focus { border-color: var(--purple-soft); }
+    input.full, .btn-row { grid-column: 1 / -1; }
+    .btn-row .btn { width: 100%; cursor: pointer; border: none; font-family: inherit; }
+    .wl-msg { margin-top: 18px; font-weight: 700; min-height: 24px; }
+    .wl-msg.ok { color: var(--gold); }
+    .wl-msg.err { color: #ff8fa3; }
+    .wl-fine { font-family: var(--mono); font-size: 11.5px; color: var(--muted); margin-top: 14px; letter-spacing: 0.06em; }
+    @media (max-width: 560px) { form { grid-template-columns: 1fr; } .wl-box { padding: 40px 22px; } }
+
+    /* ── footer ── */
+    footer { border-top: 1px solid var(--line); padding: 40px 0 48px; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .foot .sig { font-weight: 800; font-size: 17px; }
+    .foot .sig .gold { color: var(--gold); }
+    .foot .links { display: flex; gap: 22px; }
+    .foot .links a { color: var(--muted); text-decoration: none; font-size: 13.5px; }
+    .foot .links a:hover { color: var(--ink); }
+    .foot .co { width: 100%; margin-top: 18px; font-family: var(--mono); font-size: 11.5px; color: var(--muted); letter-spacing: 0.1em; }
+  </style>
+</head>
+<body>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="/">
+        <img src="/monai-icon.png" alt="MŌNAI" />
+        <span>
+          <span class="name">M<span class="o">Ō</span>NAI</span>
+          <span class="sub">THINKBOX AI STUDIOS</span>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#what-she-does">What She Does</a>
+        <a href="#architecture">How She Works</a>
+        <a href="/demo/">Explore the Demo</a>
+        <a class="nav-cta" href="#waitlist">Join the Waitlist</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="kicker">From ThinkBox AI Studios</div>
+      <h1>M<span class="macron">Ō</span>NAI.</h1>
+      <div class="tag">Your AI Executive Assistant.</div>
+      <p class="lede">She keeps watch over your business so you can finally be present for the people you built it for. One clear morning brief. Drafts in your voice. Nothing goes out without your greenlight.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-gold" href="#waitlist">Join the Waitlist</a>
+        <a class="btn btn-ghost" href="/demo/">Explore the Demo</a>
+      </div>
+      <div class="hero-note">BUILT FOR ENTREPRENEURS, MINISTRIES, EDUCATORS, AND SMALL BUSINESS OWNERS</div>
+    </section>
+
+    <section class="problem">
+      <div class="q">How many nights have you gone to bed thinking about your inbox, your calendar, the follow-ups you still haven't sent?</div>
+      <div class="a">Your body came home. Your brain is still at work. MŌNAI exists to change that.</div>
+    </section>
+
+    <section class="features" id="what-she-does">
+      <h2>What She Does</h2>
+      <p class="h-sub">MŌNAI handles the daily legwork so you can stay the CEO.</p>
+      <div class="grid">
+        <div class="card">
+          <div class="num">01</div>
+          <h3>The Daily Brief</h3>
+          <p>Every morning she reads your email, calendar, tasks, and leads, then hands you one clear brief of what actually matters today. No more digging through a hundred tabs.</p>
+        </div>
+        <div class="card">
+          <div class="num">02</div>
+          <h3>Ask Her Anything</h3>
+          <p>Talk to her the way you'd talk to an assistant. She finds answers and drafts the email, the post, and the follow-up, written in your voice.</p>
+        </div>
+        <div class="card">
+          <div class="num">03</div>
+          <h3>Approval First</h3>
+          <p>She never sends anything without your greenlight. You see exactly what goes out, who it goes to, and when. She does the legwork. You stay the CEO.</p>
+        </div>
+        <div class="card">
+          <div class="num">04</div>
+          <h3>She Learns You</h3>
+          <p>Over time she learns your style, your priorities, and your people, so she gets sharper every single week you work together.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="orra" id="architecture">
+      <h2>How She Works</h2>
+      <p class="h-sub">Security is her heartbeat. Every consequential action crosses an explicit approval boundary before anything leaves the building.</p>
+      <div class="flow">
+        <div class="step">
+          <div class="glyph">01</div>
+          <h3>Observe</h3>
+          <p>She watches the information you authorize: email, calendar, tasks, and leads.</p>
+        </div>
+        <div class="arrow">&#8594;</div>
+        <div class="step">
+          <div class="glyph">02</div>
+          <h3>Reason</h3>
+          <p>She thinks about it all day long, so you can think about what matters.</p>
+        </div>
+        <div class="arrow">&#8594;</div>
+        <div class="step gate">
+          <div class="gate-label">APPROVAL BOUNDARY</div>
+          <h3>Request</h3>
+          <p>Before anything consequential, she brings you the exact proposal for your greenlight.</p>
+        </div>
+        <div class="arrow">&#8594;</div>
+        <div class="step">
+          <div class="glyph">04</div>
+          <h3>Act</h3>
+          <p>Only on your approval does the action go out, logged and auditable.</p>
+        </div>
+      </div>
+      <p class="orra-note">Email sending, publishing, payments, and sensitive data never move because an AI decided they should. <b>You approve it, or it doesn't happen.</b></p>
+    </section>
+
+    <section class="security">
+      <h2>Security Built In From Day One</h2>
+      <p class="h-sub">Your workspace is yours alone. Your data stays yours.</p>
+      <div class="sec-grid">
+        <div class="sec-item">
+          <div class="dot">&#9679;</div>
+          <div><h4>Private Workspaces</h4><p>Every customer gets a secure, isolated workspace with their own memory and integrations.</p></div>
+        </div>
+        <div class="sec-item">
+          <div class="dot">&#9679;</div>
+          <div><h4>Tenant Isolation</h4><p>Your information is never shared across accounts. Full stop.</p></div>
+        </div>
+        <div class="sec-item">
+          <div class="dot">&#9679;</div>
+          <div><h4>Secure Integrations</h4><p>OAuth connections with token vaulting, so credentials stay protected.</p></div>
+        </div>
+        <div class="sec-item">
+          <div class="dot">&#9679;</div>
+          <div><h4>Audit Logs</h4><p>Every action is recorded, so there's always a clear trail of what happened and when.</p></div>
+        </div>
+        <div class="sec-item">
+          <div class="dot">&#9679;</div>
+          <div><h4>Privacy Controls</h4><p>You choose what she sees, what she remembers, and what she forgets.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="waitlist" id="waitlist">
+      <div class="wl-box">
+        <div class="kicker">Coming Soon</div>
+        <h2>Be First in Line</h2>
+        <p class="wl-sub">Join the waitlist and we'll reach out the moment your MŌNAI workspace is ready. Founding members get the best seat in the house.</p>
+        <form id="wl-form">
+          <input id="first_name" name="first_name" placeholder="First name" required />
+          <input id="last_name" name="last_name" placeholder="Last name" />
+          <input id="email" class="full" name="email" type="email" placeholder="Email address" required />
+          <select id="role" name="role">
+            <option value="">What best describes you?</option>
+            <option value="Entrepreneur">Entrepreneur / Business owner</option>
+            <option value="Ministry leader">Ministry leader</option>
+            <option value="Educator">Educator</option>
+            <option value="Nonprofit">Nonprofit leader</option>
+            <option value="Other">Something else</option>
+          </select>
+          <input type="hidden" name="source" value="monai-landing" />
+          <div class="btn-row"><button class="btn btn-gold" type="submit" id="wl-submit">Join the Waitlist</button></div>
+        </form>
+        <div class="wl-msg" id="wl-msg"></div>
+        <div class="wl-fine">SMART SYSTEMS. UNLIMITED GROWTH.</div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot">
+        <div class="sig">M&#332;NAI <span class="gold">&#183;</span> ThinkBox AI Studios</div>
+        <div class="links">
+          <a href="#what-she-does">What She Does</a>
+          <a href="/demo/">Demo</a>
+          <a href="#waitlist">Waitlist</a>
+        </div>
+        <div class="co">MJUNLIMITED ESSENTIAL MKTG CO. &#183; A THINKBOX AI OPERATION SYSTEMS &#183; MONAI.MJUNLIMITEDESSENTIALMKTG.COM</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('wl-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const btn = document.getElementById('wl-submit');
+      const msg = document.getElementById('wl-msg');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      msg.className = 'wl-msg';
+      msg.textContent = '';
+      try {
+        const payload = {
+          first_name: document.getElementById('first_name').value,
+          last_name: document.getElementById('last_name').value,
+          email: document.getElementById('email').value,
+          role: document.getElementById('role').value,
+          source: 'monai-landing',
+        };
+        const res = await fetch('https://api.base44.com/api/apps/6a029d2b5cc37d5b54f861bf/functions/monaiWaitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (data.ok) {
+          msg.className = 'wl-msg ok';
+          msg.textContent = "You're on the list! It's only up from here.";
+          document.getElementById('wl-form').reset();
+        } else {
+          throw new Error(data.error || 'Something went wrong.');
+        }
+      } catch (err) {
+        msg.className = 'wl-msg err';
+        msg.textContent = err.message || 'Something went wrong. Please try again.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Join the Waitlist';
+      }
+    });
+  </script>
+</body>
 </html>
