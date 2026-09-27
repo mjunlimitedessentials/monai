@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -6 120 112" width="480" height="448">
+  <title>MŌNAI mark</title>
+  <defs><linearGradient id="gNavy" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#6fb0ff"/>
+        <stop offset="0.45" stop-color="#1d4fb0"/>
+        <stop offset="1" stop-color="#0a2a6b"/>
+      </linearGradient>
+      <linearGradient id="gBars" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0" stop-color="#1a3f8f"/>
+        <stop offset="1" stop-color="#7cbaff"/>
+      </linearGradient>
+      <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#fff3c4"/>
+        <stop offset="0.35" stop-color="#f5c842"/>
+        <stop offset="0.7" stop-color="#c9971c"/>
+        <stop offset="1" stop-color="#ffe08a"/>
+      </linearGradient>
+      <linearGradient id="gGoldBack" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#c9971c" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#f5c842" stop-opacity=".35"/>
+      </linearGradient>
+      <filter id="fGlow" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="2.2" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter></defs>
+  <g transform="rotate(-24 50 60)">
+          <path d="M-4 60a54 15 0 1 1 108 0" fill="none" stroke="url(#gGoldBack)" stroke-width="3.2" stroke-linecap="round"/>
+        </g>
+        <path d="M9 86V16h12l29 38 29-38h12v70H79V34L50 72 21 34v52z" fill="url(#gNavy)"/>
+        <rect x="55" y="70" width="8" height="16" rx="1.5" fill="url(#gBars)"/>
+        <rect x="67" y="54" width="8" height="32" rx="1.5" fill="url(#gBars)"/>
+        <g transform="rotate(-24 50 60)">
+          <path d="M104 60a54 15 0 1 1 -108 0" fill="none" stroke="url(#gGold)" stroke-width="5" stroke-linecap="round"/>
+          <circle class="sat" r="3.4" fill="#fff8dc" filter="url(#fGlow)">
+            <animateMotion dur="8s" repeatCount="indefinite" path="M104 60a54 15 0 1 1 -108 0a54 15 0 1 1 108 0"/>
+            <animate attributeName="opacity" values="1;1;.25;.25;1" keyTimes="0;.48;.52;.96;1" dur="8s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+</svg>
