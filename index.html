@@ -181,6 +181,55 @@
     .reveal { transition: opacity .9s var(--ease), transform .9s var(--ease), filter .9s var(--ease); }
     @media (prefers-reduced-motion: reduce) { .intro { display: none; } .hero h1 .w { animation: none; } .reveal { filter: none; } }
 
+    /* gold chrome text + iridescent (ported mechanism, navy/gold palette) */
+    .chrome {
+      background: linear-gradient(100deg, #8a6512 0%, #fff3c4 18%, #d4a92c 30%, #ffffff 42%, #9a7414 55%, #ffe08a 68%, #d4a92c 80%, #fff8dc 92%, #8a6512 100%);
+      background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+      animation: chrome 6s linear infinite; position: relative;
+    }
+    @keyframes chrome { to { background-position: -250% 0; } }
+    .chrome::after {
+      content: attr(data-text); position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,.95) 50%, transparent 60%); background-size: 300% 100%;
+      -webkit-background-clip: text; background-clip: text; color: transparent; animation: shine 4.5s ease-in-out infinite;
+    }
+    @keyframes shine { 0% { background-position: 150% 0; } 60%, 100% { background-position: -150% 0; } }
+    .irid { background: linear-gradient(90deg, #cfe0ff, var(--gold-soft), var(--gold), #4c98ff, #cfe0ff); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: irid 9s linear infinite; }
+    @keyframes irid { to { background-position: 300% 0; } }
+
+    /* band glow: blurred conic gradient turning behind a section */
+    .band { position: relative; overflow: hidden; }
+    .band-glow { position: absolute; inset: -25%; pointer-events: none; opacity: .16; will-change: transform;
+      background: conic-gradient(from 180deg at 50% 50%, #0e2358, #f5c842, #4c98ff, #0e2358, #c9971c, #2b5cc7, #0e2358);
+      filter: blur(120px); animation: spinBand 40s linear infinite; }
+    @keyframes spinBand { to { transform: rotate(360deg); } }
+    .band > .wrap { position: relative; }
+
+    /* loader bar in the intro */
+    .intro-bar { width: min(320px, 60vw); height: 1px; background: rgba(255,255,255,.12); margin-top: 22px; position: relative; overflow: hidden; }
+    .intro-bar i { position: absolute; inset: 0; transform-origin: left; transform: scaleX(0); background: linear-gradient(90deg, #4c98ff, var(--gold-soft), var(--gold), #fff8dc); }
+    .intro-pct { margin-top: 12px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .3em; color: var(--muted-2); }
+
+    /* pinned film: the ORRA section scrubs with scroll on desktop */
+    .orra .stage { position: relative; }
+    .orra-scene { display: none; position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .orra.pinned { height: 300vh; padding: 0; }
+    .orra.pinned .stage { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; overflow: hidden; }
+    .orra.pinned .stage > .wrap { width: 100%; position: relative; }
+    .orra.pinned .orra-scene { display: block; }
+    .orra.pinned .packet { animation: none; transition: left .15s linear; }
+    .orra.pinned .step { transition: transform .5s var(--ease), border-color .5s, opacity .5s, box-shadow .5s; }
+    .orra.pinned .step.dim { opacity: .42; transform: scale(.97); }
+    .orra.pinned .step.active { opacity: 1; transform: translateY(-8px) scale(1.04); border-color: rgba(245,200,66,.7); box-shadow: 0 30px 60px rgba(0,0,0,.45), 0 0 50px rgba(245,200,66,.12); }
+    .orra.pinned .step.gate.approved .node { box-shadow: 0 0 0 10px rgba(245,200,66,.18), 0 0 60px rgba(245,200,66,.55); }
+    .orra.pinned .orra-note { opacity: 0; transform: translateY(20px); transition: opacity .5s, transform .5s var(--ease); }
+    .orra.pinned .orra-note.show { opacity: 1; transform: none; }
+    .film-hint { display: none; position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); font-family: var(--mono); font-size: 10px; letter-spacing: .34em; color: var(--muted-2); text-transform: uppercase; }
+    .film-hint::after { content: ''; display: block; width: 1px; height: 40px; margin: 10px auto 0; background: linear-gradient(180deg, var(--gold), transparent); animation: drop 2s ease-in-out infinite; }
+    @keyframes drop { 50% { transform: translateY(8px); opacity: .3; } }
+    .orra.pinned .film-hint { display: block; }
+    .orra.pinned .film-hint.hide { opacity: 0; transition: opacity .4s; }
+
     /* scroll progress */
     .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; z-index: 60; background: linear-gradient(90deg, var(--gold-soft), var(--gold)); box-shadow: 0 0 12px rgba(245,200,66,.6); }
 
@@ -263,12 +312,7 @@
       font-size: clamp(46px, 7vw, 86px); font-variation-settings: 'opsz' 144;
     }
     .hero h1 .ai { font-weight: 600; }
-    .hero h1 .ex {
-      font-style: italic; font-weight: 300;
-      background: linear-gradient(90deg, var(--gold-soft), var(--gold) 40%, var(--gold-soft));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      background-size: 200% auto; animation: shimmer 6s linear infinite;
-    }
+    .hero h1 .ex { font-style: italic; font-weight: 300; padding-right: .06em; }
     @keyframes shimmer { to { background-position: 200% center; } }
     .hero p.lede { max-width: 560px; margin: 26px 0 0; color: var(--muted); font-size: 18.5px; }
     .hero-ctas { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; align-items: center; }
@@ -593,6 +637,8 @@
       <svg class="intro-mark"><use href="#monai-mark"/></svg>
       <div class="intro-word"><span>M</span><span>Ō</span><span>N</span><span>A</span><span>I</span></div>
       <div class="intro-sub">THINKBOX AI STUDIOS</div>
+      <div class="intro-bar"><i id="intro-fill"></i></div>
+      <div class="intro-pct" id="intro-pct">Loading 0%</div>
     </div>
   </div>
   <script>
@@ -607,8 +653,14 @@
         try { sessionStorage.setItem('monai-intro', '1'); } catch (e) {}
         setTimeout(function () { el.style.display = 'none'; }, 1000);
       };
+      var fill = document.getElementById('intro-fill'), pct = document.getElementById('intro-pct'), t0 = performance.now();
+      (function tick(now) {
+        var p = Math.min(1, (now - t0) / 1700); p = 1 - Math.pow(1 - p, 3);
+        fill.style.transform = 'scaleX(' + p + ')'; pct.textContent = 'Loading ' + Math.round(p * 100) + '%';
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
       el.addEventListener('click', finish);
-      setTimeout(finish, 2300);
+      setTimeout(finish, 2400);
     })();
   </script>
 
@@ -657,7 +709,7 @@
         <div class="hero-grid">
           <div class="hero-copy">
             <div class="kicker reveal in">FROM THINKBOX AI STUDIOS</div>
-            <h1><span class="w">Your</span> <span class="w ai">AI</span><br><span class="w ex">Executive</span> <span class="w">Assistant.</span></h1>
+            <h1><span class="w">Your</span> <span class="w ai">AI</span><br><span class="w ex chrome" data-text="Executive">Executive</span> <span class="w">Assistant.</span></h1>
             <p class="lede reveal in reveal-delay-2">She keeps watch over your business so you can finally be present for the people you built it for. One clear morning brief. Drafts in your voice. Nothing goes out without your greenlight.</p>
             <div class="hero-ctas reveal in reveal-delay-3">
               <a class="btn btn-gold" href="#waitlist">Join the Waitlist</a>
@@ -716,12 +768,13 @@
       <div class="wrap">
         <div class="quote-mark reveal" aria-hidden="true">&ldquo;</div>
         <div class="q reveal reveal-delay-1">How many nights have you gone to bed thinking about your inbox, your calendar, the follow-ups you still haven't sent?</div>
-        <div class="a reveal reveal-delay-2">Your body came home. Your brain is still at work. MŌNAI exists to change that.</div>
+        <div class="a irid reveal reveal-delay-2">Your body came home. Your brain is still at work. MŌNAI exists to change that.</div>
         <div class="dawn reveal reveal-delay-3" aria-hidden="true"></div>
       </div>
     </section>
 
-    <section class="features" id="what-she-does">
+    <section class="features band" id="what-she-does">
+      <div class="band-glow" aria-hidden="true"></div>
       <div class="wrap">
         <div class="sec-head">
           <div class="kicker center reveal">Capabilities</div>
@@ -762,6 +815,8 @@
     </section>
 
     <section class="orra" id="architecture">
+      <div class="stage">
+      <canvas class="orra-scene" id="orra-scene" aria-hidden="true"></canvas>
       <div class="wrap">
         <div class="sec-head">
           <div class="kicker center reveal">Observe &middot; Reason &middot; Request &middot; Act</div>
@@ -798,6 +853,8 @@
         </div>
         <p class="orra-note reveal">Email sending, publishing, payments, and sensitive data never move because an AI decided they should. <b>You approve it, or it doesn't happen.</b></p>
       </div>
+      <div class="film-hint" id="film-hint">Scroll</div>
+      </div>
     </section>
 
     <section class="security">
@@ -833,12 +890,13 @@
       </div>
     </section>
 
-    <section class="waitlist" id="waitlist">
+    <section class="waitlist band" id="waitlist">
+      <div class="band-glow" aria-hidden="true"></div>
       <div class="wrap">
         <div class="wl-box reveal">
           <div class="glint" aria-hidden="true"></div>
           <div class="kicker center">Coming Soon</div>
-          <h2>Be <em>First</em> in Line</h2>
+          <h2>Be <em class="chrome" data-text="First">First</em> in Line</h2>
           <p class="wl-sub">Join the waitlist and we'll reach out the moment your MŌNAI workspace is ready. Founding members get the best seat in the house.</p>
           <form id="wl-form" novalidate>
             <div class="field">
@@ -897,52 +955,119 @@
 
       const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-      // 3D particle field: depth-projected points that drift toward the camera,
-      // parallax with the cursor and warp with scroll speed
+      // Additive-blended particle field (ported mechanism): soft glowing points
+      // wobble in depth, the camera drifts with the cursor, and scroll speed
+      // makes them swell and brighten
       (function cosmos() {
         const c = document.getElementById('cosmos');
         const ctx = c.getContext('2d');
         if (!ctx) return;
-        let W = 0, H = 0, DPR = 1, mx = 0, my = 0, tx = 0, ty = 0, speed = 1, lastY = window.scrollY, raf = 0;
-        const N = window.innerWidth < 700 ? 220 : 480;
-        const pts = [], dust = [];
-        const spawn = (p, init) => { p.x = (Math.random() * 2 - 1) * 1.7; p.y = (Math.random() * 2 - 1) * 1.7; p.z = init ? 0.05 + Math.random() * 0.95 : 1; p.g = Math.random() < 0.4; p.s = 0.5 + Math.random() * 1.3; p.px = null; return p; };
-        for (let i = 0; i < N; i++) pts.push(spawn({}, true));
-        for (let i = 0; i < 14; i++) dust.push({ x: Math.random(), y: Math.random(), r: 40 + Math.random() * 120, g: Math.random() < 0.5, vx: (Math.random() - 0.5) * 0.00012, vy: (Math.random() - 0.5) * 0.00012, a: 0.05 + Math.random() * 0.08 });
+        let W = 0, H = 0, DPR = 1, mx = 0, my = 0, cx = 0, cy = 0, vel = 0, vel2 = 0, lastY = window.scrollY, lastT = performance.now(), raf = 0;
+        const t0 = performance.now();
+        const N = window.innerWidth < 900 ? 280 : 640;
+        const COLS = ['255,224,138', '245,200,66', '150,190,255', '76,152,255', '255,250,235'];
+        const sprites = COLS.map((col) => {
+          const sp = document.createElement('canvas'); sp.width = sp.height = 64;
+          const g = sp.getContext('2d'); const r = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+          r.addColorStop(0, 'rgba(' + col + ',1)'); r.addColorStop(0.22, 'rgba(' + col + ',.55)'); r.addColorStop(1, 'rgba(' + col + ',0)');
+          g.fillStyle = r; g.fillRect(0, 0, 64, 64); return sp;
+        });
+        const pts = [];
+        for (let i = 0; i < N; i++) pts.push({ x: (Math.random() - 0.5) * 2.6, y: (Math.random() - 0.5) * 1.7, z: 0.18 + Math.random() * 0.82, seed: Math.random() * 100, s: 0.5 + Math.random() * 1.7, c: i % COLS.length });
         const resize = () => { DPR = Math.min(1.5, window.devicePixelRatio || 1); W = c.width = Math.floor(window.innerWidth * DPR); H = c.height = Math.floor(window.innerHeight * DPR); c.style.width = window.innerWidth + 'px'; c.style.height = window.innerHeight + 'px'; };
         resize();
         window.addEventListener('resize', resize);
         window.addEventListener('pointermove', (e) => { mx = (e.clientX / window.innerWidth - 0.5) * 2; my = (e.clientY / window.innerHeight - 0.5) * 2; }, { passive: true });
-        window.addEventListener('scroll', () => { const y = window.scrollY; speed = Math.min(7, speed + Math.abs(y - lastY) * 0.015); lastY = y; }, { passive: true });
-        const draw = () => {
-          ctx.clearRect(0, 0, W, H);
-          tx += (mx - tx) * 0.04; ty += (my - ty) * 0.04;
-          const f = Math.min(W, H) * 0.55;
-          for (const d of dust) {
-            d.x = (d.x + d.vx * speed + 1) % 1; d.y = (d.y + d.vy * speed + 1) % 1;
-            const gx = d.x * W + tx * 30 * DPR, gy = d.y * H + ty * 30 * DPR, r = d.r * DPR;
-            const g = ctx.createRadialGradient(gx, gy, 0, gx, gy, r);
-            g.addColorStop(0, d.g ? 'rgba(245,200,66,' + d.a + ')' : 'rgba(76,152,255,' + d.a + ')'); g.addColorStop(1, 'rgba(0,0,0,0)');
-            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(gx, gy, r, 0, Math.PI * 2); ctx.fill();
-          }
+        window.addEventListener('scroll', () => { const now = performance.now(), y = window.scrollY; vel = Math.min(1, Math.abs(y - lastY) / Math.max(1, now - lastT) / 2.5); lastY = y; lastT = now; }, { passive: true });
+        const draw = (now) => {
+          const t = (now - t0) / 1000;
+          ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.clearRect(0, 0, W, H);
+          ctx.globalCompositeOperation = 'lighter';
+          cx += (mx * 0.6 - cx) * 0.03; cy += (my * 0.35 - cy) * 0.03;
+          const f = Math.min(W, H) * 0.95;
           for (const p of pts) {
-            p.z -= 0.0011 * speed;
-            if (p.z <= 0.03) spawn(p, false);
-            const sx = (p.x + tx * 0.16) / p.z * f + W / 2, sy = (p.y + ty * 0.16) / p.z * f + H / 2;
-            if (sx < -20 || sx > W + 20 || sy < -20 || sy > H + 20) { spawn(p, false); continue; }
-            const depth = 1 - p.z, a = Math.min(1, depth * 1.4) * 0.85, r = (p.s * (0.35 + depth * 1.6)) * DPR;
-            const col = p.g ? '255,224,138' : '150,190,255';
-            if (speed > 1.5 && p.px !== null) {
-              ctx.strokeStyle = 'rgba(' + col + ',' + (a * 0.6) + ')'; ctx.lineWidth = r; ctx.beginPath(); ctx.moveTo(p.px, p.py); ctx.lineTo(sx, sy); ctx.stroke();
-            }
-            ctx.fillStyle = 'rgba(' + col + ',' + a + ')'; ctx.beginPath(); ctx.arc(sx, sy, r, 0, Math.PI * 2); ctx.fill();
-            p.px = sx; p.py = sy;
+            const px = p.x + Math.sin(t * 0.7 + p.seed) * 0.06 + vel2 * 0.18 * Math.sin(p.seed);
+            const py = p.y + Math.cos(t * 0.5 + p.seed * 1.3) * 0.05 - vel2 * 0.06;
+            const z = p.z + Math.sin(t * 0.3 + p.seed) * 0.04;
+            const sx = ((px - cx * 0.14) / z) * f * 0.5 + W / 2, sy = ((py - cy * 0.1) / z) * f * 0.5 + H / 2;
+            let size = p.s * (1.1 / z) * (1 + vel2 * 1.6) * 3.2 * DPR; if (size > 110 * DPR) size = 110 * DPR;
+            if (sx < -size || sx > W + size || sy < -size || sy > H + size) continue;
+            const a = (0.32 + 0.4 * Math.sin(t * 2 + p.seed) + vel2 * 0.5) * (1.15 - z * 0.7);
+            ctx.globalAlpha = Math.max(0, Math.min(1, a * 0.75));
+            ctx.drawImage(sprites[p.c], sx - size / 2, sy - size / 2, size, size);
           }
-          speed += (1 - speed) * 0.04;
+          vel2 += (vel - vel2) * 0.08; vel *= 0.9;
           if (!reduce) raf = requestAnimationFrame(draw);
         };
-        draw();
+        draw(t0);
         document.addEventListener('visibilitychange', () => { if (document.hidden) cancelAnimationFrame(raf); else if (!reduce) raf = requestAnimationFrame(draw); });
+      })();
+
+      // Pinned film: the ORRA section pins and scrubs with scroll. The signal
+      // travels the rail, gathers at the approval boundary, then releases.
+      (function film() {
+        const sec = document.getElementById('architecture');
+        const stage = sec.querySelector('.stage'), inner = stage.querySelector('.wrap'), cv = document.getElementById('orra-scene');
+        const ctx = cv.getContext('2d');
+        const steps = [...sec.querySelectorAll('.step')], gate = sec.querySelector('.step.gate'), rail = sec.querySelector('.rail'), packet = sec.querySelector('.packet');
+        const note = sec.querySelector('.orra-note'), hint = document.getElementById('film-hint');
+        let pinned = false, p = 0, inView = false, raf = 0, W = 0, H = 0, DPR = 1, lastFrame = 0;
+        const flow = []; for (let i = 0; i < 120; i++) flow.push({ t: Math.random(), v: 0.004 + Math.random() * 0.005, y: (Math.random() - 0.5) * 26, s: 1 + Math.random() * 2.2, j: Math.random() * 6.28 });
+        const reachOf = (q) => q < 0.5 ? (q / 0.5) * 0.667 : q < 0.72 ? 0.667 : 0.667 + ((q - 0.72) / 0.28) * 0.333;
+        const decide = () => {
+          const ok = !reduce && window.innerWidth > 900 && inner.offsetHeight + 90 < window.innerHeight;
+          if (ok === pinned) return;
+          pinned = ok; sec.classList.toggle('pinned', ok);
+          if (!ok) { steps.forEach((st) => st.classList.remove('active', 'dim')); gate.classList.remove('approved'); packet.style.left = ''; note.classList.remove('show'); }
+        };
+        const layout = () => { if (!pinned) return; DPR = Math.min(1.5, window.devicePixelRatio || 1); W = cv.width = Math.floor(stage.clientWidth * DPR); H = cv.height = Math.floor(stage.clientHeight * DPR); };
+        const update = () => {
+          if (!pinned) return;
+          const top = sec.getBoundingClientRect().top + window.scrollY;
+          p = Math.max(0, Math.min(1, (window.scrollY - top) / (sec.offsetHeight - window.innerHeight)));
+          const idx = p < 0.25 ? 0 : p < 0.5 ? 1 : p < 0.78 ? 2 : 3;
+          steps.forEach((st, i) => { st.classList.toggle('active', i === idx); st.classList.toggle('dim', i !== idx); });
+          gate.classList.toggle('approved', p >= 0.72);
+          packet.style.left = (reachOf(p) * 100) + '%';
+          note.classList.toggle('show', p > 0.84);
+          hint.classList.toggle('hide', p > 0.06);
+        };
+        const draw = (now) => {
+          if (!pinned || !inView) { raf = 0; return; }
+          const dt = lastFrame ? Math.min(4, (now - lastFrame) / 16.7) : 1; lastFrame = now;
+          ctx.clearRect(0, 0, W, H);
+          const sr = stage.getBoundingClientRect(), rr = rail.getBoundingClientRect();
+          const x0 = (rr.left - sr.left) * DPR, x1 = (rr.right - sr.left) * DPR, y = (rr.top - sr.top + 1) * DPR, gx = x0 + (x1 - x0) * 0.667;
+          const reach = reachOf(p), holding = p >= 0.5 && p < 0.72, released = p >= 0.72;
+          ctx.globalCompositeOperation = 'lighter';
+          for (const q of flow) {
+            q.t += q.v * dt * (released ? 1.6 : 1);
+            if (reach < 0.02) continue;
+            if (q.t > reach) { if (holding && q.t > 0.667) q.t = 0.667 - Math.random() * 0.02; else q.t = Math.random() * reach; }
+            let x = x0 + (x1 - x0) * q.t, yy = y + q.y * DPR * Math.sin(q.j + q.t * 12) * 0.5;
+            if (holding && q.t > 0.62) { const k = (p - 0.5) / 0.22; x = gx + (Math.cos(q.j) * 16 - 12) * DPR * (1 - k * 0.5); yy = y + Math.sin(q.j + p * 20) * 18 * DPR; }
+            const gold = q.t >= 0.667 || (holding && q.t > 0.62);
+            const r = q.s * DPR * (gold ? 1.5 : 1);
+            const g = ctx.createRadialGradient(x, yy, 0, x, yy, r * 4);
+            g.addColorStop(0, gold ? 'rgba(255,224,138,.7)' : 'rgba(120,175,255,.55)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, yy, r * 4, 0, Math.PI * 2); ctx.fill();
+          }
+          if (p >= 0.5) {
+            const k = holding ? (p - 0.5) / 0.22 : 1, R = (60 + k * 60) * DPR;
+            const g = ctx.createRadialGradient(gx, y, 0, gx, y, R);
+            g.addColorStop(0, 'rgba(245,200,66,' + (0.35 * k + (released ? 0.25 : 0)) + ')'); g.addColorStop(1, 'rgba(245,200,66,0)');
+            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(gx, y, R, 0, Math.PI * 2); ctx.fill();
+          }
+          ctx.globalCompositeOperation = 'source-over';
+          raf = requestAnimationFrame(draw);
+        };
+        const io = new IntersectionObserver((en) => { inView = en[0].isIntersecting; if (inView && pinned && !raf) raf = requestAnimationFrame(draw); }, { threshold: 0 });
+        io.observe(sec);
+        const all = () => { decide(); layout(); update(); if (inView && pinned && !raf) raf = requestAnimationFrame(draw); };
+        window.addEventListener('resize', all);
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('load', all);
+        all();
       })();
 
       // scroll parallax variable for the hero
