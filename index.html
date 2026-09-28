@@ -108,6 +108,79 @@
       background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
     }
 
+    /* ───────────────────────── cinematic layer ───────────────────────── */
+    #cosmos { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .rays {
+      position: absolute; left: 50%; top: -48vh; width: 170vw; height: 170vw; max-width: 2400px; max-height: 2400px;
+      transform: translateX(-50%); border-radius: 50%; pointer-events: none; opacity: .6;
+      background: conic-gradient(from 0deg at 50% 50%,
+        transparent 0deg, rgba(245,200,66,.11) 7deg, transparent 15deg,
+        transparent 58deg, rgba(76,152,255,.10) 68deg, transparent 78deg,
+        transparent 148deg, rgba(245,200,66,.09) 158deg, transparent 168deg,
+        transparent 246deg, rgba(76,152,255,.09) 258deg, transparent 270deg,
+        transparent 318deg, rgba(245,200,66,.07) 326deg, transparent 334deg, transparent 360deg);
+      -webkit-mask: radial-gradient(circle at 50% 50%, #000 0%, rgba(0,0,0,.55) 28%, transparent 60%);
+      mask: radial-gradient(circle at 50% 50%, #000 0%, rgba(0,0,0,.55) 28%, transparent 60%);
+      animation: raysSpin 110s linear infinite;
+    }
+    @keyframes raysSpin { to { transform: translateX(-50%) rotate(360deg); } }
+    .vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 85% 75% at 50% 42%, transparent 52%, rgba(2, 6, 16, .8) 100%); }
+    .flare { position: absolute; top: 13%; right: 6%; width: 560px; max-width: 70vw; height: 2px; pointer-events: none; transform: rotate(-16deg); opacity: .5;
+      background: linear-gradient(90deg, transparent, rgba(255,240,190,.6), transparent); filter: blur(1px); animation: flarePulse 9s ease-in-out infinite; }
+    .flare::after { content: ''; position: absolute; left: 50%; top: 50%; width: 160px; height: 160px; transform: translate(-50%,-50%); border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,240,190,.6), rgba(245,200,66,.14) 35%, transparent 70%); filter: blur(6px); }
+    @keyframes flarePulse { 0%,100% { opacity: .3; } 50% { opacity: .75; } }
+
+    /* cinematic intro */
+    .intro { position: fixed; inset: 0; z-index: 200; background: #02060f; display: grid; place-items: center; transition: opacity .9s var(--ease), transform .9s var(--ease), visibility 0s .9s; }
+    .intro .bar { position: absolute; left: 0; right: 0; height: 12vh; background: #000; }
+    .intro .bar.top { top: 0; } .intro .bar.bottom { bottom: 0; }
+    .intro-center { display: grid; justify-items: center; gap: 14px; transform: translateY(6px); }
+    .intro-mark { width: min(38vw, 190px); height: min(38vw, 190px); animation: introMark 1.4s var(--ease) both; filter: drop-shadow(0 0 40px rgba(245,200,66,.35)) drop-shadow(0 0 30px rgba(76,152,255,.35)); }
+    @keyframes introMark { 0% { opacity: 0; transform: scale(.55) rotateY(-70deg); filter: blur(12px); } 60% { opacity: 1; } 100% { opacity: 1; transform: scale(1) rotateY(0); filter: blur(0); } }
+    .intro-word { font-family: var(--sans); font-weight: 800; font-size: clamp(30px, 7vw, 52px); letter-spacing: .28em; padding-left: .28em; line-height: 1.25; padding-top: 4px; }
+    .intro-word span { display: inline-block; animation: introLetter .7s var(--ease) both; padding-top: 4px;
+      background: linear-gradient(90deg, #fff3c4, var(--gold) 45%, var(--gold-soft)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    @keyframes introLetter { from { opacity: 0; transform: translateY(18px) rotateX(-70deg); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
+    .intro-sub { font-family: var(--mono); font-size: 11px; letter-spacing: .4em; color: var(--muted); animation: introFade .8s .9s var(--ease) both; }
+    .intro-sweep { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(100deg, transparent 30%, rgba(255,240,190,.10) 50%, transparent 70%); transform: translateX(-100%); animation: introSweep 1.4s .5s var(--ease) both; }
+    @keyframes introSweep { to { transform: translateX(100%); } }
+    @keyframes introFade { from { opacity: 0; } to { opacity: 1; } }
+    .intro.done { opacity: 0; transform: scale(1.12); visibility: hidden; pointer-events: none; }
+    body.intro-on main { transform: scale(1.035); transform-origin: 50% 20%; }
+    main { transition: transform 1.4s var(--ease); }
+
+    /* 3D tilt + depth */
+    .grid, .flow, .sec-grid, .hero-visual, .foot { perspective: 1200px; }
+    .card, .step, .sec-item { transform-style: preserve-3d; }
+    .card.in, .step.in, .sec-item.in { transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
+    .card:hover { transform: translateY(-6px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
+    .step:hover { transform: translateY(-5px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
+    .sec-item:hover { transform: translateY(-4px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
+    .card > *, .step > * { transform: translateZ(18px); }
+    .brief-float { animation: floaty 7s ease-in-out infinite; transform-style: preserve-3d; }
+    .brief { animation: none; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transform-style: preserve-3d; transition: transform .25s ease-out, box-shadow .25s; will-change: transform; }
+    .brief::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s;
+      background: radial-gradient(360px circle at var(--gx, 50%) var(--gy, 50%), rgba(255,240,190,.16), transparent 55%); }
+    .hero-visual:hover .brief::after { opacity: 1; }
+    .brief-top, .brief-foot { transform: translateZ(26px); }
+    .brief-stats { transform: translateZ(40px); }
+    .brief-item { transform: translateZ(64px); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+    .mark-coin { position: absolute; right: -4%; top: -14%; width: 74%; opacity: .2; pointer-events: none; perspective: 900px; }
+    .mark-coin .mark { width: 100%; height: auto; animation: coin 28s linear infinite; transform-style: preserve-3d; filter: drop-shadow(0 0 30px rgba(245,200,66,.35)); }
+    @keyframes coin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+    .hero h1 { perspective: 700px; }
+    .hero h1 .w { display: inline-block; animation: wordIn 1s var(--ease) both; transform-origin: 50% 100%; }
+    .hero h1 .w:nth-child(1) { animation-delay: .15s; } .hero h1 .w:nth-child(2) { animation-delay: .3s; }
+    .hero h1 .w:nth-child(4) { animation-delay: .45s; } .hero h1 .w:nth-child(5) { animation-delay: .6s; }
+    @keyframes wordIn { from { opacity: 0; transform: translateY(46px) rotateX(-70deg); filter: blur(10px); } to { opacity: 1; transform: none; filter: blur(0); } }
+    .hero-copy { transform: translateY(calc(var(--sy, 0) * -0.05px)); }
+    .hero-visual { transform: translateY(calc(var(--sy, 0) * -0.12px)); }
+    .reveal { filter: blur(8px); }
+    .reveal.in { filter: blur(0); }
+    .reveal { transition: opacity .9s var(--ease), transform .9s var(--ease), filter .9s var(--ease); }
+    @media (prefers-reduced-motion: reduce) { .intro { display: none; } .hero h1 .w { animation: none; } .reveal { filter: none; } }
+
     /* scroll progress */
     .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; z-index: 60; background: linear-gradient(90deg, var(--gold-soft), var(--gold)); box-shadow: 0 0 12px rgba(245,200,66,.6); }
 
@@ -222,8 +295,6 @@
       background: radial-gradient(circle at 50% 40%, rgba(245,200,66,.14), transparent 55%);
       filter: blur(20px);
     }
-    .mark-bg { position: absolute; right: -8%; top: -12%; width: 78%; opacity: 0.15; pointer-events: none; }
-    .mark-bg .mark { width: 100%; height: auto; }
     .ring {
       position: absolute; width: 112%; aspect-ratio: 1; left: 50%; top: 50%; transform: translate(-50%, -50%);
       border-radius: 50%; pointer-events: none;
@@ -276,7 +347,7 @@
       .hero-grid { grid-template-columns: 1fr; gap: 40px; }
       .hero { padding-top: 36px; }
       .hero-visual { min-height: 0; max-width: 560px; margin: 0 auto; width: 100%; }
-      .mark-bg { right: 4%; top: -6%; width: 46%; }
+      .mark-coin { right: 2%; top: -8%; width: 46%; }
       .halo { inset: 0; }
       .ring { display: none; }
     }
@@ -515,14 +586,44 @@
     </defs>
   </svg>
 
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="bar top"></div><div class="bar bottom"></div>
+    <div class="intro-sweep"></div>
+    <div class="intro-center">
+      <svg class="intro-mark"><use href="#monai-mark"/></svg>
+      <div class="intro-word"><span>M</span><span>Ō</span><span>N</span><span>A</span><span>I</span></div>
+      <div class="intro-sub">THINKBOX AI STUDIOS</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var el = document.getElementById('intro'), seen = false;
+      try { seen = sessionStorage.getItem('monai-intro') === '1'; } catch (e) {}
+      if (seen || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.style.display = 'none'; return; }
+      document.body.classList.add('intro-on');
+      el.querySelectorAll('.intro-word span').forEach(function (l, i) { l.style.animationDelay = (0.55 + i * 0.09) + 's'; });
+      var finish = function () {
+        el.classList.add('done'); document.body.classList.remove('intro-on');
+        try { sessionStorage.setItem('monai-intro', '1'); } catch (e) {}
+        setTimeout(function () { el.style.display = 'none'; }, 1000);
+      };
+      el.addEventListener('click', finish);
+      setTimeout(finish, 2300);
+    })();
+  </script>
+
   <div class="progress" id="progress"></div>
 
   <div class="bg-fixed" aria-hidden="true">
+    <canvas id="cosmos"></canvas>
+    <div class="rays"></div>
     <div class="aurora"></div>
     <div class="bg-grid"></div>
     <div class="orb orb-gold"></div>
     <div class="orb orb-blue"></div>
     <div class="starfield" id="starfield"></div>
+    <div class="flare"></div>
+    <div class="vignette"></div>
     <div class="bg-noise"></div>
   </div>
 
@@ -556,7 +657,7 @@
         <div class="hero-grid">
           <div class="hero-copy">
             <div class="kicker reveal in">FROM THINKBOX AI STUDIOS</div>
-            <h1 class="reveal in reveal-delay-1">Your <span class="ai">AI</span><br><span class="ex">Executive</span> Assistant.</h1>
+            <h1><span class="w">Your</span> <span class="w ai">AI</span><br><span class="w ex">Executive</span> <span class="w">Assistant.</span></h1>
             <p class="lede reveal in reveal-delay-2">She keeps watch over your business so you can finally be present for the people you built it for. One clear morning brief. Drafts in your voice. Nothing goes out without your greenlight.</p>
             <div class="hero-ctas reveal in reveal-delay-3">
               <a class="btn btn-gold" href="#waitlist">Join the Waitlist</a>
@@ -568,8 +669,9 @@
           <div class="hero-visual reveal in reveal-delay-2">
             <div class="halo" aria-hidden="true"></div>
             <div class="ring" aria-hidden="true"></div>
-            <div class="mark-bg" aria-hidden="true"><svg class="mark"><use href="#monai-mark"/></svg></div>
-            <div class="brief" aria-label="Example morning brief from MŌNAI">
+            <div class="mark-coin" aria-hidden="true"><svg class="mark"><use href="#monai-mark"/></svg></div>
+            <div class="brief-float">
+            <div class="brief" id="brief" aria-label="Example morning brief from MŌNAI">
               <div class="brief-top">
                 <div class="brief-title"><span class="live-dot"></span>MORNING BRIEF &middot; <span id="brief-day">TUESDAY</span></div>
                 <div class="brief-time">7:00 AM</div>
@@ -593,6 +695,7 @@
                 <span class="brief-log" id="brief-log">AUDIT LOG &middot; 0 ACTIONS TODAY</span>
                 <a href="/demo/">Explore the Demo &rarr;</a>
               </div>
+            </div>
             </div>
           </div>
         </div>
@@ -792,9 +895,79 @@
     (function () {
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+      const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      // 3D particle field: depth-projected points that drift toward the camera,
+      // parallax with the cursor and warp with scroll speed
+      (function cosmos() {
+        const c = document.getElementById('cosmos');
+        const ctx = c.getContext('2d');
+        if (!ctx) return;
+        let W = 0, H = 0, DPR = 1, mx = 0, my = 0, tx = 0, ty = 0, speed = 1, lastY = window.scrollY, raf = 0;
+        const N = window.innerWidth < 700 ? 220 : 480;
+        const pts = [], dust = [];
+        const spawn = (p, init) => { p.x = (Math.random() * 2 - 1) * 1.7; p.y = (Math.random() * 2 - 1) * 1.7; p.z = init ? 0.05 + Math.random() * 0.95 : 1; p.g = Math.random() < 0.4; p.s = 0.5 + Math.random() * 1.3; p.px = null; return p; };
+        for (let i = 0; i < N; i++) pts.push(spawn({}, true));
+        for (let i = 0; i < 14; i++) dust.push({ x: Math.random(), y: Math.random(), r: 40 + Math.random() * 120, g: Math.random() < 0.5, vx: (Math.random() - 0.5) * 0.00012, vy: (Math.random() - 0.5) * 0.00012, a: 0.05 + Math.random() * 0.08 });
+        const resize = () => { DPR = Math.min(1.5, window.devicePixelRatio || 1); W = c.width = Math.floor(window.innerWidth * DPR); H = c.height = Math.floor(window.innerHeight * DPR); c.style.width = window.innerWidth + 'px'; c.style.height = window.innerHeight + 'px'; };
+        resize();
+        window.addEventListener('resize', resize);
+        window.addEventListener('pointermove', (e) => { mx = (e.clientX / window.innerWidth - 0.5) * 2; my = (e.clientY / window.innerHeight - 0.5) * 2; }, { passive: true });
+        window.addEventListener('scroll', () => { const y = window.scrollY; speed = Math.min(7, speed + Math.abs(y - lastY) * 0.015); lastY = y; }, { passive: true });
+        const draw = () => {
+          ctx.clearRect(0, 0, W, H);
+          tx += (mx - tx) * 0.04; ty += (my - ty) * 0.04;
+          const f = Math.min(W, H) * 0.55;
+          for (const d of dust) {
+            d.x = (d.x + d.vx * speed + 1) % 1; d.y = (d.y + d.vy * speed + 1) % 1;
+            const gx = d.x * W + tx * 30 * DPR, gy = d.y * H + ty * 30 * DPR, r = d.r * DPR;
+            const g = ctx.createRadialGradient(gx, gy, 0, gx, gy, r);
+            g.addColorStop(0, d.g ? 'rgba(245,200,66,' + d.a + ')' : 'rgba(76,152,255,' + d.a + ')'); g.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(gx, gy, r, 0, Math.PI * 2); ctx.fill();
+          }
+          for (const p of pts) {
+            p.z -= 0.0011 * speed;
+            if (p.z <= 0.03) spawn(p, false);
+            const sx = (p.x + tx * 0.16) / p.z * f + W / 2, sy = (p.y + ty * 0.16) / p.z * f + H / 2;
+            if (sx < -20 || sx > W + 20 || sy < -20 || sy > H + 20) { spawn(p, false); continue; }
+            const depth = 1 - p.z, a = Math.min(1, depth * 1.4) * 0.85, r = (p.s * (0.35 + depth * 1.6)) * DPR;
+            const col = p.g ? '255,224,138' : '150,190,255';
+            if (speed > 1.5 && p.px !== null) {
+              ctx.strokeStyle = 'rgba(' + col + ',' + (a * 0.6) + ')'; ctx.lineWidth = r; ctx.beginPath(); ctx.moveTo(p.px, p.py); ctx.lineTo(sx, sy); ctx.stroke();
+            }
+            ctx.fillStyle = 'rgba(' + col + ',' + a + ')'; ctx.beginPath(); ctx.arc(sx, sy, r, 0, Math.PI * 2); ctx.fill();
+            p.px = sx; p.py = sy;
+          }
+          speed += (1 - speed) * 0.04;
+          if (!reduce) raf = requestAnimationFrame(draw);
+        };
+        draw();
+        document.addEventListener('visibilitychange', () => { if (document.hidden) cancelAnimationFrame(raf); else if (!reduce) raf = requestAnimationFrame(draw); });
+      })();
+
+      // scroll parallax variable for the hero
+      const setSy = () => document.documentElement.style.setProperty('--sy', Math.min(window.scrollY, 900));
+      if (!reduce) { window.addEventListener('scroll', setSy, { passive: true }); setSy(); }
+
+      // 3D tilt: the pointer over an area tilts a target, with a glare highlight
+      const tilt = (area, target, max) => {
+        if (!fine || reduce) return;
+        area.addEventListener('pointermove', (e) => {
+          const r = area.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+          target.style.setProperty('--ry', (x * max).toFixed(2) + 'deg');
+          target.style.setProperty('--rx', (-y * max).toFixed(2) + 'deg');
+          target.style.setProperty('--gx', ((x + 0.5) * 100).toFixed(1) + '%');
+          target.style.setProperty('--gy', ((y + 0.5) * 100).toFixed(1) + '%');
+        });
+        area.addEventListener('pointerleave', () => { target.style.setProperty('--rx', '0deg'); target.style.setProperty('--ry', '0deg'); });
+      };
+      tilt(document.querySelector('.hero-visual'), document.getElementById('brief'), 12);
+      document.querySelectorAll('.card, .step, .sec-item').forEach((el) => tilt(el, el, 7));
+
       // starfield + occasional meteors
       const field = document.getElementById('starfield');
-      for (let i = 0; i < 70; i++) {
+      for (let i = 0; i < 40; i++) {
         const s = document.createElement('div');
         s.className = 'star' + (Math.random() < 0.35 ? ' blue' : '');
         const size = 1.5 + Math.random() * 2;
