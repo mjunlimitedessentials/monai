@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MŌNAI is your AI executive assistant. One clear morning brief, drafts in your voice, and nothing goes out without your greenlight. From ThinkBox AI Studios." />
+  <meta name="theme-color" content="#050b1a" />
+  <meta property="og:title" content="MŌNAI | Your AI Executive Assistant" />
+  <meta property="og:description" content="MŌNAI keeps watch over your business so you can be present for the people you built it for. Nothing goes out without your greenlight." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://monai.mjunlimitedessentialmktg.com/" />
+  <meta property="og:image" content="https://monai.mjunlimitedessentialmktg.com/monai-icon-512.png" />
+  <title>MŌNAI | Your AI Executive Assistant | ThinkBox AI Studios</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/monai-icon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/monai-icon-64.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/monai-icon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #050b1a;
+      --bg2: #0d1b3d;
+      --navy: #0e2358;
+      --navy-deep: #071229;
+      --ink: #eef3ff;
+      --muted: #93a3c9;
+      --gold: #f5c842;
+      --gold-soft: #ffe08a;
+      --line: rgba(245, 200, 66, 0.18);
+      --line-blue: rgba(120, 160, 255, 0.18);
+      --card: rgba(120, 160, 255, 0.06);
+      --mono: 'JetBrains Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--gold); color: #050b1a; }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── animated background ── */
+    .bg-fixed {
+      position: fixed; inset: 0; z-index: 0; overflow: hidden;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(14, 35, 88, 0.9), transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(14, 35, 88, 0.7), transparent 50%),
+        linear-gradient(160deg, #050b1a 0%, #071229 45%, #0d1b3d 100%);
+    }
+    .orb { position: absolute; border-radius: 50%; filter: blur(110px); opacity: 0.55; }
+    .orb-gold { width: 460px; height: 460px; background: rgba(245, 200, 66, 0.14); top: -140px; right: -100px; animation: drift1 22s ease-in-out infinite; }
+    .orb-blue { width: 520px; height: 520px; background: rgba(70, 120, 255, 0.16); bottom: -160px; left: -140px; animation: drift2 26s ease-in-out infinite; }
+    @keyframes drift1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-40px, 50px); } }
+    @keyframes drift2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(50px, -40px); } }
+
+    .starfield { position: absolute; inset: 0; }
+    .star {
+      position: absolute; width: 3px; height: 3px; border-radius: 50%;
+      background: rgba(245, 200, 66, 0.55); animation: twinkle 3.5s ease-in-out infinite;
+    }
+    @keyframes twinkle { 0%,100% { opacity: 0.15; } 50% { opacity: 0.9; } }
+
+    header, section, footer { position: relative; z-index: 1; }
+
+    /* ── nav ── */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand img { height: 40px; width: auto; filter: drop-shadow(0 0 14px rgba(245,200,66,0.25)); }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 600; transition: color .2s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      color: #050b1a !important; background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      padding: 10px 22px; border-radius: 999px; font-weight: 700;
+      box-shadow: 0 6px 24px rgba(245,200,66,0.22);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(245,200,66,0.32); }
+    @media (max-width: 760px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+    /* ── reveal animation ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1.in { transition-delay: .1s; }
+    .reveal-delay-2.in { transition-delay: .22s; }
+    .reveal-delay-3.in { transition-delay: .34s; }
+    .reveal-delay-4.in { transition-delay: .46s; }
+
+    /* ── hero ── */
+    .hero { text-align: center; padding: 96px 0 70px; }
+    .hero-logo { display: flex; justify-content: center; margin-bottom: 30px; }
+    .hero-logo img { max-width: 420px; width: 88%; filter: drop-shadow(0 0 40px rgba(245,200,66,0.18)); animation: floaty 6s ease-in-out infinite; }
+    @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .kicker {
+      font-family: var(--mono); font-size: 12px; letter-spacing: 0.3em;
+      color: var(--gold); text-transform: uppercase; margin-bottom: 18px;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .kicker::before, .kicker::after { content: ''; width: 28px; height: 1px; background: var(--line); }
+    .hero .tag {
+      font-size: clamp(19px, 2.8vw, 27px); font-weight: 700; margin-top: 6px;
+      background: linear-gradient(90deg, var(--gold-soft), var(--gold) 40%, var(--gold-soft));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      background-size: 200% auto; animation: shimmer 5s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: 200% center; } }
+    .hero p.lede { max-width: 640px; margin: 22px auto 0; color: var(--muted); font-size: 18px; }
+    .hero-ctas { display: flex; gap: 16px; justify-content: center; margin-top: 38px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 16px 34px; border-radius: 999px;
+      font-weight: 700; font-size: 16px; text-decoration: none; transition: transform .18s, box-shadow .22s;
+      position: relative;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-gold { background: linear-gradient(135deg, var(--gold-soft), var(--gold)); color: #050b1a; box-shadow: 0 10px 34px rgba(245, 200, 66, 0.28); }
+    .btn-gold:hover { box-shadow: 0 14px 40px rgba(245, 200, 66, 0.4); }
+    .btn-ghost { border: 1px solid var(--line-blue); color: var(--ink); background: rgba(120,160,255,0.05); backdrop-filter: blur(6px); }
+    .btn-ghost:hover { border-color: var(--gold); }
+    .hero-note { font-family: var(--mono); font-size: 11.5px; color: var(--muted); margin-top: 22px; letter-spacing: 0.1em; }
+
+    /* ── social proof strip ── */
+    .proof { padding: 6px 0 46px; text-align: center; }
+    .proof-row { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 10px; }
+    .proof-item { text-align: center; }
+    .proof-item .n { font-family: var(--mono); font-size: 26px; font-weight: 700; color: var(--gold); }
+    .proof-item .l { font-size: 12px; color: var(--muted); letter-spacing: 0.05em; margin-top: 2px; }
+
+    /* ── problem ── */
+    .problem { padding: 40px 0 60px; text-align: center; }
+    .problem .q {
+      font-size: clamp(22px, 3.4vw, 32px); font-weight: 700; max-width: 820px; margin: 0 auto;
+      color: var(--ink);
+    }
+    .problem .a {
+      font-weight: 800; margin-top: 12px; font-size: clamp(22px, 3.4vw, 32px);
+      background: linear-gradient(90deg, #cfe0ff, var(--gold-soft));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    /* ── features ── */
+    .features { padding: 44px 0 76px; }
+    h2 { font-size: clamp(30px, 4.5vw, 44px); font-weight: 900; text-align: center; letter-spacing: -0.01em; }
+    .h-sub { text-align: center; color: var(--muted); max-width: 620px; margin: 14px auto 50px; font-size: 17px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .card {
+      background: var(--card); border: 1px solid var(--line-blue); border-radius: 20px;
+      padding: 30px 26px; transition: border-color .25s, transform .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; inset: 0; border-radius: 20px; opacity: 0;
+      background: linear-gradient(135deg, rgba(245,200,66,0.08), transparent 60%);
+      transition: opacity .25s;
+    }
+    .card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
+    .card:hover::before { opacity: 1; }
+    .card .num { font-family: var(--mono); font-size: 12px; color: var(--gold); letter-spacing: 0.2em; }
+    .card h3 { font-size: 20px; font-weight: 800; margin: 10px 0 8px; }
+    .card p { color: var(--muted); font-size: 15px; }
+
+    /* ── orra ── */
+    .orra { padding: 76px 0; }
+    .flow { display: flex; justify-content: center; align-items: stretch; gap: 12px; flex-wrap: wrap; margin-top: 46px; }
+    .step {
+      flex: 1 1 180px; max-width: 240px; border: 1px solid var(--line-blue); border-radius: 18px;
+      padding: 26px 20px; background: var(--card); text-align: center; position: relative;
+      transition: transform .25s, border-color .25s;
+    }
+    .step:hover { transform: translateY(-4px); border-color: var(--gold); }
+    .step .glyph { font-family: var(--mono); font-size: 13px; color: var(--gold); letter-spacing: 0.2em; }
+    .step h3 { font-size: 21px; font-weight: 800; margin: 8px 0 6px; }
+    .step p { font-size: 13.5px; color: var(--muted); }
+    .step.gate {
+      border-color: var(--gold); background: rgba(245, 200, 66, 0.07);
+      box-shadow: 0 0 44px rgba(245, 200, 66, 0.12);
+      animation: pulseGate 3.5s ease-in-out infinite;
+    }
+    @keyframes pulseGate { 0%,100% { box-shadow: 0 0 30px rgba(245,200,66,0.10); } 50% { box-shadow: 0 0 50px rgba(245,200,66,0.22); } }
+    .step.gate .gate-label {
+      font-family: var(--mono); font-size: 10px; color: #050b1a; background: var(--gold);
+      padding: 3px 10px; border-radius: 999px; letter-spacing: 0.18em; font-weight: 700;
+      display: inline-block; margin-bottom: 10px;
+    }
+    .arrow { align-self: center; color: var(--gold); font-size: 22px; font-weight: 700; }
+    @media (max-width: 900px) { .arrow { transform: rotate(90deg); width: 100%; text-align: center; } }
+    .orra-note { text-align: center; color: var(--muted); font-size: 15px; max-width: 640px; margin: 40px auto 0; }
+    .orra-note b { color: var(--gold); }
+
+    /* ── security ── */
+    .security { padding: 76px 0; }
+    .sec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .sec-item {
+      display: flex; gap: 12px; align-items: flex-start; border: 1px solid var(--line-blue);
+      border-radius: 16px; padding: 20px; background: var(--card); transition: border-color .25s, transform .25s;
+    }
+    .sec-item:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .sec-item .dot { color: var(--gold); font-size: 18px; line-height: 1.4; }
+    .sec-item h4 { font-size: 15.5px; font-weight: 700; }
+    .sec-item p { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
+
+    /* ── waitlist ── */
+    .waitlist { padding: 84px 0 100px; }
+    .wl-box {
+      max-width: 720px; margin: 0 auto; border: 1px solid var(--gold); border-radius: 28px;
+      background: linear-gradient(160deg, rgba(245, 200, 66, 0.09), rgba(5, 11, 26, 0.6));
+      padding: 54px 40px; text-align: center; position: relative; overflow: hidden;
+      box-shadow: 0 0 60px rgba(245,200,66,0.08);
+    }
+    .wl-box .kicker { margin-bottom: 14px; }
+    .wl-box h2 { text-align: center; }
+    .wl-box p.wl-sub { color: var(--muted); margin: 12px auto 30px; max-width: 460px; }
+    form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 520px; margin: 0 auto; }
+    input, select {
+      background: rgba(5, 11, 26, 0.75); border: 1px solid var(--line-blue); border-radius: 12px;
+      padding: 14px 16px; color: var(--ink); font-family: inherit; font-size: 15px; outline: none;
+      transition: border-color .2s;
+    }
+    input:focus, select:focus { border-color: var(--gold); }
+    input.full, .btn-row { grid-column: 1 / -1; }
+    .btn-row .btn { width: 100%; cursor: pointer; border: none; font-family: inherit; }
+    .wl-msg { margin-top: 18px; font-weight: 700; min-height: 24px; }
+    .wl-msg.ok { color: var(--gold); }
+    .wl-msg.err { color: #ff8fa3; }
+    .wl-fine { font-family: var(--mono); font-size: 11.5px; color: var(--muted); margin-top: 16px; letter-spacing: 0.08em; }
+    @media (max-width: 560px) { form { grid-template-columns: 1fr; } .wl-box { padding: 42px 22px; } }
+
+    /* ── footer ── */
+    footer { border-top: 1px solid var(--line-blue); padding: 40px 0 48px; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .foot .sig { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 15px; }
+    .foot .sig img { height: 22px; }
+    .foot .links { display: flex; gap: 22px; }
+    .foot .links a { color: var(--muted); text-decoration: none; font-size: 13.5px; }
+    .foot .links a:hover { color: var(--gold); }
+    .foot .co { width: 100%; margin-top: 18px; font-family: var(--mono); font-size: 11.5px; color: var(--muted); letter-spacing: 0.1em; }
+  </style>
+</head>
+<body>
+  <div class="bg-fixed">
+    <div class="orb orb-gold"></div>
+    <div class="orb orb-blue"></div>
+    <div class="starfield" id="starfield"></div>
+  </div>
+
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="/">
+        <img src="/monai-icon.png" alt="MŌNAI" />
+      </a>
+      <div class="nav-links">
+        <a href="#what-monai-does">What MŌNAI Does</a>
+        <a href="#architecture">How MŌNAI Works</a>
+        <a href="/demo/">Explore the Demo</a>
+        <a class="nav-cta" href="#waitlist">Join the Waitlist</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="kicker reveal in">FROM THINKBOX AI STUDIOS</div>
+      <div class="hero-logo reveal in reveal-delay-1">
+        <img src="/monai-icon.png" alt="MŌNAI" style="display:none" />
+        <img src="/monai-icon-512.png" alt="MŌNAI" style="max-width:180px;">
+      </div>
+      <div class="tag reveal in reveal-delay-2">Your AI Executive Assistant.</div>
+      <p class="lede reveal in reveal-delay-3">MŌNAI keeps watch over your business so you can finally be present for the people you built it for. One clear morning brief. Drafts in your voice. Nothing goes out without your greenlight.</p>
+      <div class="hero-ctas reveal in reveal-delay-4">
+        <a class="btn btn-gold" href="#waitlist">Join the Waitlist</a>
+        <a class="btn btn-ghost" href="/demo/">Explore the Demo</a>
+      </div>
+      <div class="hero-note reveal in reveal-delay-4">BUILT FOR ENTREPRENEURS &middot; MINISTRIES &middot; EDUCATORS &middot; SMALL BUSINESS OWNERS</div>
+    </section>
+
+    <section class="proof reveal">
+      <div class="proof-row">
+        <div class="proof-item"><div class="n">4</div><div class="l">CORE MOVES DAILY</div></div>
+        <div class="proof-item"><div class="n">100%</div><div class="l">APPROVAL BEFORE ACTION</div></div>
+        <div class="proof-item"><div class="n">0</div><div class="l">SURPRISES IN YOUR INBOX</div></div>
+      </div>
+    </section>
+
+    <section class="problem reveal">
+      <div class="q">How many nights have you gone to bed thinking about your inbox, your calendar, the follow-ups you still haven't sent?</div>
+      <div class="a">Your body came home. Your brain is still at work. MŌNAI exists to change that.</div>
+    </section>
+
+    <section class="features" id="what-monai-does">
+      <h2 class="reveal">What MŌNAI Does</h2>
+      <p class="h-sub reveal">MŌNAI handles the daily legwork so you can stay the CEO.</p>
+      <div class="grid">
+        <div class="card reveal reveal-delay-1">
+          <div class="num">01</div>
+          <h3>The Daily Brief</h3>
+          <p>Every morning MŌNAI reads your email, calendar, tasks, and leads, then hands you one clear brief of what actually matters today. No more digging through a hundred tabs.</p>
+        </div>
+        <div class="card reveal reveal-delay-2">
+          <div class="num">02</div>
+          <h3>Ask Her Anything</h3>
+          <p>Talk to MŌNAI the way you'd talk to an assistant. MŌNAI finds answers and drafts the email, the post, and the follow-up, written in your voice.</p>
+        </div>
+        <div class="card reveal reveal-delay-3">
+          <div class="num">03</div>
+          <h3>Approval First</h3>
+          <p>MŌNAI never sends anything without your greenlight. You see exactly what goes out, who it goes to, and when. Your assistant does the legwork. You stay the CEO.</p>
+        </div>
+        <div class="card reveal reveal-delay-4">
+          <div class="num">04</div>
+          <h3>MŌNAI Learns You</h3>
+          <p>Over time your assistant learns your style, your priorities, and your people, so MŌNAI gets sharper every single week you work together.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="orra" id="architecture">
+      <h2 class="reveal">How MŌNAI Works</h2>
+      <p class="h-sub reveal">Security is MŌNAI's heartbeat. Every consequential action crosses an explicit approval boundary before anything leaves the building.</p>
+      <div class="flow">
+        <div class="step reveal reveal-delay-1">
+          <div class="glyph">01</div>
+          <h3>Observe</h3>
+          <p>MŌNAI watches the information you authorize: email, calendar, tasks, and leads.</p>
+        </div>
+        <div class="arrow reveal reveal-delay-1">&#8594;</div>
+        <div class="step reveal reveal-delay-2">
+          <div class="glyph">02</div>
+          <h3>Reason</h3>
+          <p>MŌNAI thinks about it all day long, so you can think about what matters.</p>
+        </div>
+        <div class="arrow reveal reveal-delay-2">&#8594;</div>
+        <div class="step gate reveal reveal-delay-3">
+          <div class="gate-label">APPROVAL BOUNDARY</div>
+          <h3>Request</h3>
+          <p>Before anything consequential, your assistant brings you the exact proposal for your greenlight.</p>
+        </div>
+        <div class="arrow reveal reveal-delay-3">&#8594;</div>
+        <div class="step reveal reveal-delay-4">
+          <div class="glyph">04</div>
+          <h3>Act</h3>
+          <p>Only on your approval does the action go out, logged and auditable.</p>
+        </div>
+      </div>
+      <p class="orra-note reveal">Email sending, publishing, payments, and sensitive data never move because an AI decided they should. <b>You approve it, or it doesn't happen.</b></p>
+    </section>
+
+    <section class="security reveal">
+      <h2>Security Built In From Day One</h2>
+      <p class="h-sub">Your workspace is yours alone. Your data stays yours.</p>
+      <div class="sec-grid">
+        <div class="sec-item">
+          <div class="dot">&#9679;</div>
+          <div><h4>Private Workspaces</h4><p>Every customer gets a secure, isolated workspace with their own memory and integrations.</p></div>
+        </div>
+        <div class="sec-item">
+          <div class="dot">&#9679;</div>
+          <div><h4>Tenant Isolation</h4><p>Your information is never shared across accounts. Full stop.</p></div>
+        </div>
+        <div class="sec-item">
+          <div class="dot">&#9679;</div>
+          <div><h4>Secure Integrations</h4><p>OAuth connections with token vaulting, so credentials stay protected.</p></div>
+        </div>
+        <div class="sec-item">
+          <div class="dot">&#9679;</div>
+          <div><h4>Audit Logs</h4><p>Every action is recorded, so there's always a clear trail of what happened and when.</p></div>
+        </div>
+        <div class="sec-item">
+          <div class="dot">&#9679;</div>
+          <div><h4>Privacy Controls</h4><p>You choose what your assistant sees, remembers, and forgets.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="waitlist" id="waitlist">
+      <div class="wl-box reveal">
+        <div class="kicker">Coming Soon</div>
+        <h2>Be First in Line</h2>
+        <p class="wl-sub">Join the waitlist and we'll reach out the moment your MŌNAI workspace is ready. Founding members get the best seat in the house.</p>
+        <form id="wl-form">
+          <input id="first_name" name="first_name" placeholder="First name" required />
+          <input id="last_name" name="last_name" placeholder="Last name" />
+          <input id="email" class="full" name="email" type="email" placeholder="Email address" required />
+          <select id="role" name="role">
+            <option value="">What best describes you?</option>
+            <option value="Entrepreneur">Entrepreneur / Business owner</option>
+            <option value="Ministry leader">Ministry leader</option>
+            <option value="Educator">Educator</option>
+            <option value="Nonprofit">Nonprofit leader</option>
+            <option value="Other">Something else</option>
+          </select>
+          <input type="hidden" name="source" value="monai-landing" />
+          <div class="btn-row"><button class="btn btn-gold" type="submit" id="wl-submit">Join the Waitlist</button></div>
+        </form>
+        <div class="wl-msg" id="wl-msg"></div>
+        <div class="wl-fine">SMART SYSTEMS. UNLIMITED GROWTH.</div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot">
+        <div class="sig"><img src="/monai-icon.png" alt="" /> M&#332;NAI &middot; ThinkBox AI Studios</div>
+        <div class="links">
+          <a href="#what-monai-does">What MŌNAI Does</a>
+          <a href="/demo/">Demo</a>
+          <a href="#waitlist">Waitlist</a>
+        </div>
+        <div class="co">MJUNLIMITED ESSENTIAL MKTG CO. &#183; A THINKBOX AI OPERATION SYSTEMS &#183; MONAI.MJUNLIMITEDESSENTIALMKTG.COM</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // starfield
+    (function () {
+      const field = document.getElementById('starfield');
+      for (let i = 0; i < 46; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        s.style.left = Math.random() * 100 + '%';
+        s.style.top = Math.random() * 100 + '%';
+        s.style.animationDelay = (Math.random() * 4) + 's';
+        s.style.opacity = (0.2 + Math.random() * 0.5).toString();
+        field.appendChild(s);
+      }
+    })();
+
+    // scroll reveal
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+      }, { threshold: 0.15 });
+      els.forEach((el) => obs.observe(el));
+    })();
+
+    // waitlist form
+    document.getElementById('wl-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const btn = document.getElementById('wl-submit');
+      const msg = document.getElementById('wl-msg');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      msg.className = 'wl-msg';
+      msg.textContent = '';
+      try {
+        const payload = {
+          first_name: document.getElementById('first_name').value,
+          last_name: document.getElementById('last_name').value,
+          email: document.getElementById('email').value,
+          role: document.getElementById('role').value,
+          source: 'monai-landing',
+        };
+        const res = await fetch('https://api.base44.com/api/apps/6a029d2b5cc37d5b54f861bf/functions/monaiWaitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (data.ok) {
+          msg.className = 'wl-msg ok';
+          msg.textContent = "You're on the list! It's only up from here.";
+          document.getElementById('wl-form').reset();
+        } else {
+          throw new Error(data.error || 'Something went wrong.');
+        }
+      } catch (err) {
+        msg.className = 'wl-msg err';
+        msg.textContent = err.message || 'Something went wrong. Please try again.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Join the Waitlist';
+      }
+    });
+  </script>
+</body>
+</html>
