@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MŌNAI is your AI executive assistant. One clear morning brief, drafts in your voice, and nothing goes out without your greenlight. From ThinkBox AI Studios." />
+  <meta name="description" content="The beginner's guide to MŌNAI, the digital assistant from ThinkBox AI Studios. If you can use a smartphone, you can use MŌNAI. Your first week, step by step." />
   <meta name="theme-color" content="#050b1a" />
-  <meta property="og:title" content="MŌNAI | Your AI Executive Assistant" />
-  <meta property="og:description" content="MŌNAI keeps watch over your business so you can be present for the people you built it for. Nothing goes out without your greenlight." />
+  <meta property="og:title" content="MŌNAI Guide | If you can use a smartphone, you can use MŌNAI" />
+  <meta property="og:description" content="What MŌNAI is in plain words, the four steps, your first week day by day, and how MŌNAI keeps a company protected." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://monai.mjunlimitedessentialmktg.com/" />
+  <meta property="og:url" content="https://monai.mjunlimitedessentialmktg.com/guide/" />
   <meta property="og:image" content="https://monai.mjunlimitedessentialmktg.com/monai-icon-512.png" />
-  <title>MŌNAI | Your AI Executive Assistant | ThinkBox AI Studios</title>
+  <title>MŌNAI Guide | Your First Week | ThinkBox AI Studios</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/monai-icon-32.png" />
   <link rel="icon" type="image/png" sizes="64x64" href="/monai-icon-64.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/monai-icon-180.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Manrope:wght@400..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style>
+    <style>
     :root {
       --bg: #050b1a;
       --bg2: #0d1b3d;
@@ -621,10 +621,46 @@
       html { scroll-behavior: auto; }
     }
   </style>
+  <style>
+    /* ───────────────────────── guide-specific ───────────────────────── */
+    .hero h1 { font-size: clamp(40px, 5.6vw, 68px); }
+    .hero .lede { max-width: 560px; }
+    .guide-note { max-width: 820px; margin: 0 auto; text-align: center; color: var(--muted); font-size: 17px; }
+    .guide-note b { color: var(--ink); font-weight: 700; }
+    .prose { max-width: 720px; margin: 0 auto; color: var(--muted); font-size: 17px; }
+    .prose p + p { margin-top: 16px; }
+    .prose strong { color: var(--ink); }
+
+    /* week timeline */
+    .week { position: relative; max-width: 860px; margin: 0 auto; display: grid; gap: 14px; }
+    .day { display: grid; grid-template-columns: 76px 1fr; gap: 18px; align-items: start; padding: 20px 22px; border-radius: 18px; border: 1px solid var(--line-blue); background: var(--card); transition: border-color .3s, transform .3s var(--ease); position: relative; }
+    .day:hover { border-color: rgba(245,200,66,.5); transform: translateX(4px); }
+    .day .d { font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em; color: var(--gold); line-height: 1.4; }
+    .day .d b { display: block; font-family: var(--serif); font-size: 34px; font-weight: 500; color: var(--ink); letter-spacing: 0; line-height: 1; margin-top: 4px; }
+    .day h3 { font-family: var(--serif); font-size: 22px; font-weight: 500; }
+    .day p { color: var(--muted); font-size: 15px; margin-top: 6px; }
+    .day .mins { display: inline-block; margin-top: 10px; font-family: var(--mono); font-size: 10px; letter-spacing: .16em; color: var(--muted-2); border: 1px solid var(--line-blue); border-radius: 999px; padding: 4px 10px; }
+    .day.gold { border-color: rgba(245,200,66,.5); background: rgba(245,200,66,.05); }
+    @media (max-width: 560px) { .day { grid-template-columns: 1fr; gap: 8px; } }
+
+    /* faq */
+    .faq { max-width: 820px; margin: 0 auto; display: grid; gap: 10px; }
+    .faq details { border: 1px solid var(--line-blue); border-radius: 16px; background: var(--card); transition: border-color .3s; }
+    .faq details[open], .faq details:hover { border-color: rgba(245,200,66,.5); }
+    .faq summary { list-style: none; cursor: pointer; padding: 18px 22px; font-weight: 800; font-size: 16px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; font-family: var(--serif); font-size: 26px; color: var(--gold); line-height: 1; transition: transform .3s var(--ease); flex: 0 0 auto; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq .ans { padding: 0 22px 20px; color: var(--muted); font-size: 15px; line-height: 1.65; }
+
+    /* closing */
+    .cta-box { text-align: center; }
+    .cta-box .btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+    .sig-line { font-family: var(--serif); font-style: italic; color: var(--gold-soft); font-size: 22px; text-align: center; margin-top: 40px; }
+  </style>
 </head>
 <body>
-  <!-- ── logo definitions (inline SVG, reused via <use>) ── -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
       <linearGradient id="gNavy" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0" stop-color="#6fb0ff"/>
@@ -667,7 +703,7 @@
     </defs>
   </svg>
 
-  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro" id="intro" aria-hidden="true">
     <div class="bar top"></div><div class="bar bottom"></div>
     <div class="intro-sweep"></div>
     <div class="intro-center">
@@ -681,13 +717,13 @@
   <script>
     (function () {
       var el = document.getElementById('intro'), seen = false;
-      try { seen = sessionStorage.getItem('monai-intro') === '1'; } catch (e) {}
+      try { seen = sessionStorage.getItem('monai-intro-guide') === '1'; } catch (e) {}
       if (seen || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.style.display = 'none'; return; }
       document.body.classList.add('intro-on');
       el.querySelectorAll('.intro-word span').forEach(function (l, i) { l.style.animationDelay = (0.55 + i * 0.09) + 's'; });
       var finish = function () {
         el.classList.add('done'); document.body.classList.remove('intro-on');
-        try { sessionStorage.setItem('monai-intro', '1'); } catch (e) {}
+        try { sessionStorage.setItem('monai-intro-guide', '1'); } catch (e) {}
         setTimeout(function () { el.style.display = 'none'; }, 1000);
       };
       var fill = document.getElementById('intro-fill'), pct = document.getElementById('intro-pct'), t0 = performance.now();
@@ -703,7 +739,7 @@
 
   <div class="progress" id="progress"></div>
 
-  <div class="bg-fixed" aria-hidden="true">
+    <div class="bg-fixed" aria-hidden="true">
     <canvas id="cosmos"></canvas>
     <div class="rays"></div>
     <div class="aurora"></div>
@@ -721,28 +757,28 @@
       <nav>
         <a class="lockup" href="/" aria-label="MŌNAI home">
           <svg class="mark" aria-hidden="true"><use href="#monai-mark"/></svg>
-          <span class="wordmark"><span class="wm">MŌNAI</span><span class="wm-sub">ThinkBox AI Studios</span></span>
+          <span class="wordmark"><span class="wm">MŌNAI</span><span class="wm-sub">Beginner's Guide</span></span>
         </a>
         <div class="nav-links">
-          <a href="#what-it-does">What It Does</a>
-          <a href="#architecture">How It Works</a>
-          <a href="#pricing">Pricing</a>
-          <a href="/guide/">Guide</a>
-          <a href="/demo/">Explore the Demo</a>
-          <a class="nav-cta" href="#waitlist">Join the Waitlist</a>
+          <a href="#steps">The Four Steps</a>
+          <a href="#week">Your First Week</a>
+          <a href="#company">For Your Company</a>
+          <a href="#faq">FAQ</a>
+          <a href="/demo/">Demo</a>
+          <a class="nav-cta" href="/#waitlist">Join the Waitlist</a>
         </div>
         <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
       </nav>
     </div>
   </header>
   <div class="mobile-menu" id="mobile-menu">
-    <a href="#what-it-does">What It Does</a>
-    <a href="#architecture">How It Works</a>
-    <a href="#pricing">Pricing</a>
+    <a href="#steps">The Four Steps</a>
+    <a href="#week">Your First Week</a>
+    <a href="#company">For Your Company</a>
     <a href="#faq">FAQ</a>
-    <a href="/guide/">Beginner's Guide</a>
     <a href="/demo/">Explore the Demo</a>
-    <a class="mm-cta" href="#waitlist">Join the Waitlist</a>
+    <a href="/">Back to the Landing Page</a>
+    <a class="mm-cta" href="/#waitlist">Join the Waitlist</a>
   </div>
 
   <main>
@@ -750,14 +786,14 @@
       <div class="wrap">
         <div class="hero-grid">
           <div class="hero-copy">
-            <div class="kicker reveal in">FROM THINKBOX AI STUDIOS</div>
-            <h1><span class="w">Your</span> <span class="w ai">AI</span><br><span class="w ex chrome" data-text="Executive">Executive</span> <span class="w">Assistant.</span></h1>
-            <p class="lede reveal in reveal-delay-2">MŌNAI keeps watch over your business so you can finally be present for the people you built it for. One clear morning brief. Drafts in your voice. Nothing goes out without your greenlight.</p>
+            <div class="kicker reveal in">The Beginner's Guide</div>
+            <h1><span class="w">If</span> <span class="w">you can use a</span><br><span class="w ex chrome" data-text="smartphone,">smartphone,</span><br><span class="w">you can use MŌNAI.</span></h1>
+            <p class="lede reveal in reveal-delay-2">Hey! If you have been hearing about AI everywhere and wondering whether any of it is actually for you, this page is for you. Listen no need to worry. You never learned how your phone works inside. You just tap, and things happen. MŌNAI works the same way.</p>
             <div class="hero-ctas reveal in reveal-delay-3">
-              <a class="btn btn-gold" href="#waitlist">Join the Waitlist</a>
+              <a class="btn btn-gold" href="#week">See Your First Week</a>
               <a class="btn btn-ghost" href="/demo/">Explore the Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             </div>
-            <div class="hero-note reveal in reveal-delay-4">BUILT FOR <b>ENTREPRENEURS</b> &middot; <b>MINISTRIES</b> &middot; <b>EDUCATORS</b> &middot; <b>SMALL BUSINESS OWNERS</b></div>
+            <div class="hero-note reveal in reveal-delay-4">TEN MINUTES A DAY &middot; NO TRAINING &middot; NO TECH TEAM &middot; <b>NO JARGON</b></div>
           </div>
 
           <div class="hero-visual reveal in reveal-delay-2">
@@ -765,29 +801,19 @@
             <div class="ring" aria-hidden="true"></div>
             <div class="mark-coin" aria-hidden="true"><svg class="mark"><use href="#monai-mark"/></svg></div>
             <div class="brief-float">
-            <div class="brief" id="brief" aria-label="Example morning brief from MŌNAI">
+            <div class="brief" id="brief-card" aria-label="What MŌNAI is">
               <div class="brief-top">
-                <div class="brief-title"><span class="live-dot"></span>MORNING BRIEF &middot; <span id="brief-day">TUESDAY</span></div>
-                <div class="brief-time">7:00 AM</div>
+                <div class="brief-title"><span class="live-dot"></span>WHAT MŌNAI IS</div>
+                <div class="brief-time">IN PLAIN WORDS</div>
               </div>
-              <div class="brief-stats">
-                <div class="bs"><b>12</b><span>emails read</span></div>
-                <div class="bs"><b>3</b><span>need you</span></div>
-                <div class="bs"><b>2</b><span>drafts ready</span></div>
-              </div>
-              <div class="brief-item" id="brief-item">
-                <div class="bi-head"><span class="bi-type" id="bi-type">EMAIL DRAFT</span><span class="bi-gate">AWAITING YOUR GREENLIGHT</span></div>
-                <div class="bi-subject" id="bi-subject">Re: Spring partnership &middot; Dana Whitfield</div>
-                <p class="bi-body" id="bi-body">Hi Dana, thank you for your patience. I'd love to move forward with the spring pilot. Would Thursday at 10 work for a 20-minute call?</p>
-                <div class="bi-actions">
-                  <button class="bi-approve" id="bi-approve" type="button">Approve &amp; send</button>
-                  <button class="bi-edit" type="button" id="bi-edit">Edit</button>
-                </div>
-                <div class="bi-done" id="bi-done"><span class="chk">&#10003;</span><span id="bi-done-text">Approved &middot; sent 9:14 AM &middot; logged</span></div>
+              <div class="brief-item" style="margin-top:16px">
+                <div class="bi-head"><span class="bi-type">THE DIGITAL ASSISTANT</span><span class="bi-gate">YOU STAY IN CHARGE</span></div>
+                <p class="bi-body" style="margin-top:10px;color:var(--ink);font-size:14.5px">MŌNAI is a digital assistant for your business. MŌNAI connects to your email and your calendar, keeps an eye on your business day, and prepares the things you would normally do yourself late at night: the summary of what matters, the reply that needs writing, the decision that needs making.</p>
+                <p class="bi-body" style="margin-top:10px">Then MŌNAI brings each one to you and asks. You say yes or no. That is the whole relationship. MŌNAI does the legwork. You stay in charge.</p>
               </div>
               <div class="brief-foot">
-                <span class="brief-log" id="brief-log">AUDIT LOG &middot; 0 ACTIONS TODAY</span>
-                <a href="/demo/">Explore the Demo &rarr;</a>
+                <span class="brief-log">FROM THINKBOX AI STUDIOS</span>
+                <a href="/#waitlist">Join the waitlist &rarr;</a>
               </div>
             </div>
             </div>
@@ -796,74 +822,14 @@
       </div>
     </section>
 
-    <section class="proof">
-      <div class="wrap">
-        <div class="proof-row reveal">
-          <div class="proof-item"><div class="n" data-count="4">0</div><div class="l">CORE MOVES DAILY</div></div>
-          <div class="proof-item"><div class="n" data-count="100" data-suffix="%">0%</div><div class="l">APPROVAL BEFORE ACTION</div></div>
-          <div class="proof-item"><div class="n" data-count="0">0</div><div class="l">SURPRISES IN YOUR INBOX</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="problem">
-      <div class="wrap">
-        <div class="quote-mark reveal" aria-hidden="true">&ldquo;</div>
-        <div class="q reveal reveal-delay-1">How many nights have you gone to bed thinking about your inbox, your calendar, the follow-ups you still haven't sent?</div>
-        <div class="a irid reveal reveal-delay-2">Your body came home. Your brain is still at work. MŌNAI exists to change that.</div>
-        <div class="dawn reveal reveal-delay-3" aria-hidden="true"></div>
-      </div>
-    </section>
-
-    <section class="features band" id="what-it-does">
-      <div class="band-glow" aria-hidden="true"></div>
-      <div class="wrap">
-        <div class="sec-head">
-          <div class="kicker center reveal">Capabilities</div>
-          <h2 class="reveal">What <em>MŌNAI</em> Does</h2>
-          <p class="h-sub reveal">MŌNAI handles the daily legwork so you can stay the CEO.</p>
-        </div>
-        <div class="grid">
-          <div class="card reveal reveal-delay-1">
-            <div class="num">01</div>
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
-            <h3>The Daily Brief</h3>
-            <p>Every morning MŌNAI reads your email, calendar, tasks, and leads, then hands you one clear brief of what actually matters today. No more digging through a hundred tabs.</p>
-            <div class="glow-line"></div>
-          </div>
-          <div class="card reveal reveal-delay-2">
-            <div class="num">02</div>
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg></div>
-            <h3>Ask MŌNAI Anything</h3>
-            <p>Talk to MŌNAI the way you'd talk to an assistant. It finds answers and drafts the email, the post, and the follow-up, written in your voice.</p>
-            <div class="glow-line"></div>
-          </div>
-          <div class="card reveal reveal-delay-3">
-            <div class="num">03</div>
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5l8-3z"/><path d="M8.5 12l2.3 2.3L15.5 9.5"/></svg></div>
-            <h3>Approval First</h3>
-            <p>MŌNAI never sends anything without your greenlight. You see exactly what goes out, who it goes to, and when. The assistant does the legwork. You stay the CEO.</p>
-            <div class="glow-line"></div>
-          </div>
-          <div class="card reveal reveal-delay-4">
-            <div class="num">04</div>
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9zM5 16l.7 1.6L7.3 18.3l-1.6.7L5 20.6l-.7-1.6-1.6-.7 1.6-.7z"/></svg></div>
-            <h3>MŌNAI Learns You</h3>
-            <p>Over time MŌNAI learns your style, your priorities, and your people, so it gets sharper every single week you work together.</p>
-            <div class="glow-line"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="orra" id="architecture">
+    <section class="orra" id="steps">
       <div class="stage">
       <canvas class="orra-scene" id="orra-scene" aria-hidden="true"></canvas>
       <div class="wrap">
         <div class="sec-head">
-          <div class="kicker center reveal">Observe &middot; Reason &middot; Request &middot; Act</div>
-          <h2 class="reveal">How <em>MŌNAI</em> Works</h2>
-          <p class="h-sub reveal">Security is MŌNAI's heartbeat. Every consequential action crosses an explicit approval boundary before anything leaves the building.</p>
+          <div class="kicker center reveal">The Four Steps, Simply</div>
+          <h2 class="reveal">Observe. Reason. <em>Request.</em> Act.</h2>
+          <p class="h-sub reveal">MŌNAI works in the same four steps every time, in the same order. Think of step three as the lock on the door. Nothing leaves your business without your hand on that lock.</p>
         </div>
         <div class="flow">
           <div class="rail" aria-hidden="true"><div class="packet"></div></div>
@@ -871,129 +837,89 @@
             <div class="node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
             <div class="glyph">01</div>
             <h3>Observe</h3>
-            <p>MŌNAI watches the information you authorize: email, calendar, tasks, and leads.</p>
+            <p>MŌNAI reads only the information you have authorized: your email, your calendar, and anything else you choose to connect. Nothing more.</p>
           </div>
           <div class="step reveal reveal-delay-2">
             <div class="node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3a4 4 0 0 0-4 4v1a3 3 0 0 0-1 5.5A3.5 3.5 0 0 0 7 20h2V3zM15 3a4 4 0 0 1 4 4v1a3 3 0 0 1 1 5.5A3.5 3.5 0 0 1 17 20h-2V3z"/><path d="M9 8H7M9 15H7M15 8h2M15 15h2"/></svg></div>
             <div class="glyph">02</div>
             <h3>Reason</h3>
-            <p>MŌNAI thinks it through all day long, so you can think about what matters.</p>
+            <p>MŌNAI thinks it through. What needs you today? What can wait? What reply would sound like you?</p>
           </div>
           <div class="step gate reveal reveal-delay-3">
-            <div class="gate-label">APPROVAL BOUNDARY</div>
+            <div class="gate-label">THE LOCK ON THE DOOR</div>
             <div class="node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.3" fill="currentColor"/></svg></div>
             <div class="glyph">03</div>
             <h3>Request</h3>
-            <p>Before anything consequential, MŌNAI brings you the exact proposal for your greenlight.</p>
+            <p>MŌNAI comes to you with a plain-language request. "May I send this reply to Dana?" "May I move Tuesday's meeting to Wednesday at 9:30?"</p>
           </div>
           <div class="step reveal reveal-delay-4">
             <div class="node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L10 14"/><path d="M21 3l-7 18-4-7-7-4z"/></svg></div>
             <div class="glyph">04</div>
             <h3>Act</h3>
-            <p>Only on your approval does the action go out, logged and auditable.</p>
+            <p>Only after you say yes does anything happen. If you say no, nothing happens, and MŌNAI learns from that too.</p>
           </div>
         </div>
-        <p class="orra-note reveal">Email sending, publishing, payments, and sensitive data never move because an AI decided they should. <b>You approve it, or it doesn't happen.</b></p>
+        <p class="orra-note reveal">No sending, posting, paying, sharing, or record changes ever happen without a human yes. <b>You approve it, or it doesn't happen.</b></p>
       </div>
       <div class="film-hint" id="film-hint">Scroll</div>
       </div>
     </section>
 
-    <section class="security">
+    <section class="features band" id="week">
+      <div class="band-glow" aria-hidden="true"></div>
       <div class="wrap">
         <div class="sec-head">
-          <div class="kicker center reveal">Trust</div>
-          <h2 class="reveal">Security Built In <em>From Day One</em></h2>
-          <p class="h-sub reveal">Your workspace is yours alone. Your data stays yours.</p>
+          <div class="kicker center reveal">Onboarding</div>
+          <h2 class="reveal">Your <em>First Week</em> with MŌNAI</h2>
+          <p class="h-sub reveal">Ten minutes a day is all this takes. Here is the path.</p>
+        </div>
+        <div class="week">
+          <div class="day reveal reveal-delay-1"><div class="d">DAY<b>1</b></div><div><h3>Your private workspace</h3><p>You get a private workspace that belongs only to your company. You set up two-step verification, the same kind of code your bank texts you. Five minutes, and your front door has a deadbolt.</p><span class="mins">5 MINUTES</span></div></div>
+          <div class="day reveal reveal-delay-1"><div class="d">DAY<b>2</b></div><div><h3>Connect email in watch mode</h3><p>You connect your email, and MŌNAI starts in watch mode. Watch mode means MŌNAI reads and learns. MŌNAI sends nothing. You are simply letting MŌNAI get to know your inbox.</p><span class="mins">3 MINUTES</span></div></div>
+          <div class="day reveal reveal-delay-2"><div class="d">DAY<b>3</b></div><div><h3>Connect your calendar</h3><p>Same idea. MŌNAI now sees your meetings, your open hours, and the times you protect (school pickup, Sunday service, family dinner).</p><span class="mins">3 MINUTES</span></div></div>
+          <div class="day reveal reveal-delay-2"><div class="d">DAY<b>4</b></div><div><h3>Set your priorities in plain English</h3><p>No settings menus. You type sentences like "Dana Whitfield is a priority contact" or "Never book over 3:15 on weekdays" or "Anything over $1,000 needs me." MŌNAI remembers.</p><span class="mins">10 MINUTES</span></div></div>
+          <div class="day gold reveal reveal-delay-3"><div class="d">DAY<b>5</b></div><div><h3>Your first Morning Brief</h3><p>You wake up to one page. What needs you, what MŌNAI drafted, what got handled quietly. Coffee in hand, you read it in three minutes.</p><span class="mins">3 MINUTES</span></div></div>
+          <div class="day reveal reveal-delay-3"><div class="d">DAY<b>6</b></div><div><h3>Review and approve or decline</h3><p>MŌNAI brings you the first requests. You approve some, decline some, edit one. Every answer teaches MŌNAI how you work.</p><span class="mins">10 MINUTES</span></div></div>
+          <div class="day reveal reveal-delay-4"><div class="d">DAY<b>7</b></div><div><h3>Ten minutes a day</h3><p>By now you see the pattern. Ten focused minutes with MŌNAI replaces the hours you used to spend chasing your inbox. The rest of the day is yours again.</p><span class="mins">10 MINUTES, EVERY DAY</span></div></div>
+        </div>
+        <p class="sig-line reveal">It's only up from here!</p>
+      </div>
+    </section>
+
+    <section class="security" id="company">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="kicker center reveal">For Your Company</div>
+          <h2 class="reveal">Security Is the <em>Heartbeat</em></h2>
+          <p class="h-sub reveal">Here is what that means for you, in everyday terms.</p>
         </div>
         <div class="sec-grid">
           <div class="sec-item reveal reveal-delay-1">
             <div class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 4v5"/></svg></div>
-            <div><h4>Private Workspaces</h4><p>Every customer gets a secure, isolated workspace with their own memory and integrations.</p></div>
+            <div><h4>Your own private workspace</h4><p>Every company gets a separate, locked workspace. Your information lives in your space and nowhere else. Think of it as your own office with your own key, in a building where no office connects to another.</p></div>
           </div>
           <div class="sec-item reveal reveal-delay-2">
-            <div class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/><path d="M13 3h8v8M3 13v8h8" opacity=".45"/></svg></div>
-            <div><h4>Tenant Isolation</h4><p>Your information is never shared across accounts. Full stop.</p></div>
+            <div class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M15 20a4.5 4.5 0 0 1 6 0"/></svg></div>
+            <div><h4>Team members only see what they need</h4><p>Each person gets access to their lane and nothing beyond it. Your bookkeeper does not see your pastoral emails. Your intern does not see payroll. Managers can approve requests for their own teams, and you can see everything.</p></div>
           </div>
           <div class="sec-item reveal reveal-delay-3">
-            <div class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="14" r="4"/><path d="M11 11l9-9M15 7l2 2M18 4l2 2"/></svg></div>
-            <div><h4>Secure Integrations</h4><p>OAuth connections with token vaulting, so credentials stay protected.</p></div>
+            <div class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M12 17h.01"/></svg></div>
+            <div><h4>Two-step verification on every login</h4><p>Signing in takes your password plus a code on your phone. If someone gets your password, they still cannot get in. This is the same protection your bank uses.</p></div>
           </div>
           <div class="sec-item reveal reveal-delay-3">
             <div class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M15 3v5h5M9 13h6M9 17h6M9 9h2"/></svg></div>
-            <div><h4>Audit Logs</h4><p>Every action is recorded, so there's always a clear trail of what happened and when.</p></div>
+            <div><h4>Encrypted connections and a full audit log</h4><p>Everything that travels between you, MŌNAI, and your email or calendar is encrypted end to end. Every action is written in a log with a timestamp: what was requested, who approved it, when it happened.</p></div>
           </div>
           <div class="sec-item reveal reveal-delay-4">
-            <div class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/><path d="M4 4l16 16" /></svg></div>
-            <div><h4>Privacy Controls</h4><p>You choose what MŌNAI sees, what it remembers, and what it forgets.</p></div>
+            <div class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5l8-3z"/><path d="M8.5 12l2.3 2.3L15.5 9.5"/></svg></div>
+            <div><h4>Your data stays yours</h4><p>MŌNAI never sells or shares your information. Ever. When you ask, you get a full export of everything, or a full deletion. No waiting period, no hoops. You own your business, and you own your data.</p></div>
           </div>
         </div>
-        <div class="sec-badge reveal"><span><i></i>ISOLATED &middot; VAULTED &middot; LOGGED &middot; YOURS</span></div>
+        <div class="sec-badge reveal"><span><i></i>ISOLATED &middot; LEAST-PRIVILEGE &middot; VERIFIED &middot; ENCRYPTED &middot; LOGGED &middot; YOURS</span></div>
       </div>
     </section>
 
-    <section class="pricing band" id="pricing">
-      <div class="band-glow" aria-hidden="true"></div>
-      <div class="wrap">
-        <div class="sec-head">
-          <div class="kicker center reveal">Pricing</div>
-          <h2 class="reveal">Simple, <em>Honest</em> Pricing</h2>
-          <p class="h-sub reveal">Less than one day a month of a part-time assistant. Founding members lock their price for life.</p>
-        </div>
-        <div class="plans">
-          <div class="plan founding reveal reveal-delay-1">
-            <div class="ribbon">FOUNDING WINDOW &middot; LIMITED</div>
-            <div class="pname">FOUNDING MEMBER</div>
-            <div class="price">$97<small>/month</small></div>
-            <div class="lock">LOCKED FOR LIFE</div>
-            <p class="who">For the first wave on the waitlist. Full MŌNAI for one workspace, at a price that never goes up.</p>
-            <ul>
-              <li>Morning Brief every day</li>
-              <li>Drafts in your voice, approval first</li>
-              <li>Email and calendar connected</li>
-              <li>Private workspace, audit log, two-step verification</li>
-              <li>Founding price locked for as long as you stay</li>
-            </ul>
-            <a class="btn btn-gold" href="#waitlist">Claim a Founding Seat</a>
-          </div>
-          <div class="plan reveal reveal-delay-2">
-            <div class="pname">STANDARD</div>
-            <div class="price">$149<small>/month</small></div>
-            <div class="lock">AFTER THE FOUNDING WINDOW</div>
-            <p class="who">The same MŌNAI for one workspace, for everyone who joins after the founding seats are gone.</p>
-            <ul>
-              <li>Morning Brief every day</li>
-              <li>Drafts in your voice, approval first</li>
-              <li>Email and calendar connected</li>
-              <li>Private workspace, audit log, two-step verification</li>
-              <li>Cancel any time</li>
-            </ul>
-            <a class="btn btn-ghost" href="#waitlist">Join the Waitlist</a>
-          </div>
-          <div class="plan reveal reveal-delay-3">
-            <div class="pname">BUSINESS</div>
-            <div class="price">$299<small>/month</small></div>
-            <div class="lock">FOR TEAMS</div>
-            <p class="who">For companies, ministries, and nonprofits where more than one person needs a lane.</p>
-            <ul>
-              <li>Everything in Standard</li>
-              <li>Multiple team seats</li>
-              <li>Each person sees only their lane</li>
-              <li>Manager approvals for their own teams</li>
-              <li>Team-wide audit view</li>
-            </ul>
-            <a class="btn btn-ghost" href="#waitlist">Join the Waitlist</a>
-          </div>
-        </div>
-        <div class="setup reveal">
-          <div><b>Done-For-You Setup</b><br><span>Optional, one time. We connect everything, load your priorities, and walk you through your first Morning Brief.</span></div>
-          <div class="amt">$500</div>
-        </div>
-        <p class="price-note reveal">No contracts. No fees to leave. Your data is exported to you or deleted on request, whichever you choose.</p>
-      </div>
-    </section>
-
-    <section class="faqs" id="faq">
+    <section class="features" id="faq">
       <div class="wrap">
         <div class="sec-head">
           <div class="kicker center reveal">Questions</div>
@@ -1010,46 +936,21 @@
           <details><summary>Can my team use MŌNAI?</summary><div class="ans">Yes. Each team member gets access only to what their role needs. Managers can approve requests for their own teams. You see everything and set the rules.</div></details>
           <details><summary>What if I want to cancel?</summary><div class="ans">Cancel any time from your settings. No contracts, no fees to leave. Your data is exported to you or deleted on request, whichever you choose.</div></details>
         </div>
-        <p class="faq-more reveal">New to all this? <a href="/guide/">Read the Beginner's Guide and your first week, day by day &rarr;</a></p>
       </div>
     </section>
 
     <section class="waitlist band" id="waitlist">
       <div class="band-glow" aria-hidden="true"></div>
       <div class="wrap">
-        <div class="wl-box reveal">
+        <div class="wl-box reveal cta-box">
           <div class="glint" aria-hidden="true"></div>
           <div class="kicker center">Coming Soon</div>
-          <h2>Be <em class="chrome" data-text="First">First</em> in Line</h2>
-          <p class="wl-sub">Join the waitlist and we'll reach out the moment your MŌNAI workspace is ready. Founding members get the best seat in the house.</p>
-          <form id="wl-form" novalidate>
-            <div class="field">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
-              <input id="first_name" name="first_name" placeholder="First name" autocomplete="given-name" required />
-            </div>
-            <div class="field">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
-              <input id="last_name" name="last_name" placeholder="Last name" autocomplete="family-name" />
-            </div>
-            <div class="field full">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-              <input id="email" name="email" type="email" placeholder="Email address" autocomplete="email" required />
-            </div>
-            <div class="field full">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
-              <select id="role" name="role">
-                <option value="">What best describes you?</option>
-                <option value="Entrepreneur">Entrepreneur / Business owner</option>
-                <option value="Ministry leader">Ministry leader</option>
-                <option value="Educator">Educator</option>
-                <option value="Nonprofit">Nonprofit leader</option>
-                <option value="Other">Something else</option>
-              </select>
-            </div>
-            <input type="hidden" name="source" value="monai-landing" />
-            <div class="btn-row"><button class="btn btn-gold" type="submit" id="wl-submit">Join the Waitlist</button></div>
-          </form>
-          <div class="wl-msg" id="wl-msg" role="status" aria-live="polite"></div>
+          <h2>Ready for a <em class="chrome" data-text="quieter">quieter</em> inbox?</h2>
+          <p class="wl-sub">Founding members get locked-in pricing for life and the best seat in the house. Join the waitlist and we'll reach out the moment your MŌNAI workspace is ready.</p>
+          <div class="btn-row">
+            <a class="btn btn-gold" href="/#waitlist">Join the Waitlist</a>
+            <a class="btn btn-ghost" href="/#pricing">See Pricing</a>
+          </div>
           <div class="wl-fine">SMART SYSTEMS. UNLIMITED GROWTH.</div>
         </div>
       </div>
@@ -1061,12 +962,13 @@
       <div class="foot">
         <div class="sig">
           <svg class="mark" aria-hidden="true"><use href="#monai-mark"/></svg>
-          <div>M&#332;NAI &middot; ThinkBox AI Studios<small>Your AI Executive Assistant</small></div>
+          <div>M&#332;NAI &middot; ThinkBox AI Studios<small>The digital assistant for your business</small></div>
         </div>
         <div class="links">
-          <a href="#what-it-does">What It Does</a>
+          <a href="/">Landing Page</a>
           <a href="/demo/">Demo</a>
-          <a href="#waitlist">Waitlist</a>
+          <a href="/#pricing">Pricing</a>
+          <a href="/#waitlist">Waitlist</a>
         </div>
         <div class="co">MJUNLIMITED ESSENTIAL MKTG CO. &#183; A THINKBOX AI OPERATION SYSTEMS &#183; MONAI.MJUNLIMITEDESSENTIALMKTG.COM</div>
       </div>
@@ -1076,10 +978,9 @@
   <script>
     (function () {
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
       const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-      // Additive-blended particle field (ported mechanism): soft glowing points
+            // Additive-blended particle field (ported mechanism): soft glowing points
       // wobble in depth, the camera drifts with the cursor, and scroll speed
       // makes them swell and brighten
       (function cosmos() {
@@ -1127,73 +1028,6 @@
         document.addEventListener('visibilitychange', () => { if (document.hidden) cancelAnimationFrame(raf); else if (!reduce) raf = requestAnimationFrame(draw); });
       })();
 
-      // Pinned film: the ORRA section pins and scrubs with scroll. The signal
-      // travels the rail, gathers at the approval boundary, then releases.
-      (function film() {
-        const sec = document.getElementById('architecture');
-        const stage = sec.querySelector('.stage'), inner = stage.querySelector('.wrap'), cv = document.getElementById('orra-scene');
-        const ctx = cv.getContext('2d');
-        const steps = [...sec.querySelectorAll('.step')], gate = sec.querySelector('.step.gate'), rail = sec.querySelector('.rail'), packet = sec.querySelector('.packet');
-        const note = sec.querySelector('.orra-note'), hint = document.getElementById('film-hint');
-        let pinned = false, p = 0, inView = false, raf = 0, W = 0, H = 0, DPR = 1, lastFrame = 0;
-        const flow = []; for (let i = 0; i < 120; i++) flow.push({ t: Math.random(), v: 0.004 + Math.random() * 0.005, y: (Math.random() - 0.5) * 26, s: 1 + Math.random() * 2.2, j: Math.random() * 6.28 });
-        const reachOf = (q) => q < 0.5 ? (q / 0.5) * 0.667 : q < 0.72 ? 0.667 : 0.667 + ((q - 0.72) / 0.28) * 0.333;
-        const decide = () => {
-          const ok = !reduce && window.innerWidth > 900 && inner.offsetHeight + 90 < window.innerHeight;
-          if (ok === pinned) return;
-          pinned = ok; sec.classList.toggle('pinned', ok);
-          if (!ok) { steps.forEach((st) => st.classList.remove('active', 'dim')); gate.classList.remove('approved'); packet.style.left = ''; note.classList.remove('show'); }
-        };
-        const layout = () => { if (!pinned) return; DPR = Math.min(1.5, window.devicePixelRatio || 1); W = cv.width = Math.floor(stage.clientWidth * DPR); H = cv.height = Math.floor(stage.clientHeight * DPR); };
-        const update = () => {
-          if (!pinned) return;
-          const top = sec.getBoundingClientRect().top + window.scrollY;
-          p = Math.max(0, Math.min(1, (window.scrollY - top) / (sec.offsetHeight - window.innerHeight)));
-          const idx = p < 0.25 ? 0 : p < 0.5 ? 1 : p < 0.78 ? 2 : 3;
-          steps.forEach((st, i) => { st.classList.toggle('active', i === idx); st.classList.toggle('dim', i !== idx); });
-          gate.classList.toggle('approved', p >= 0.72);
-          packet.style.left = (reachOf(p) * 100) + '%';
-          note.classList.toggle('show', p > 0.84);
-          hint.classList.toggle('hide', p > 0.06);
-        };
-        const draw = (now) => {
-          if (!pinned || !inView) { raf = 0; return; }
-          const dt = lastFrame ? Math.min(4, (now - lastFrame) / 16.7) : 1; lastFrame = now;
-          ctx.clearRect(0, 0, W, H);
-          const sr = stage.getBoundingClientRect(), rr = rail.getBoundingClientRect();
-          const x0 = (rr.left - sr.left) * DPR, x1 = (rr.right - sr.left) * DPR, y = (rr.top - sr.top + 1) * DPR, gx = x0 + (x1 - x0) * 0.667;
-          const reach = reachOf(p), holding = p >= 0.5 && p < 0.72, released = p >= 0.72;
-          ctx.globalCompositeOperation = 'lighter';
-          for (const q of flow) {
-            q.t += q.v * dt * (released ? 1.6 : 1);
-            if (reach < 0.02) continue;
-            if (q.t > reach) { if (holding && q.t > 0.667) q.t = 0.667 - Math.random() * 0.02; else q.t = Math.random() * reach; }
-            let x = x0 + (x1 - x0) * q.t, yy = y + q.y * DPR * Math.sin(q.j + q.t * 12) * 0.5;
-            if (holding && q.t > 0.62) { const k = (p - 0.5) / 0.22; x = gx + (Math.cos(q.j) * 16 - 12) * DPR * (1 - k * 0.5); yy = y + Math.sin(q.j + p * 20) * 18 * DPR; }
-            const gold = q.t >= 0.667 || (holding && q.t > 0.62);
-            const r = q.s * DPR * (gold ? 1.5 : 1);
-            const g = ctx.createRadialGradient(x, yy, 0, x, yy, r * 4);
-            g.addColorStop(0, gold ? 'rgba(255,224,138,.7)' : 'rgba(120,175,255,.55)'); g.addColorStop(1, 'rgba(0,0,0,0)');
-            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, yy, r * 4, 0, Math.PI * 2); ctx.fill();
-          }
-          if (p >= 0.5) {
-            const k = holding ? (p - 0.5) / 0.22 : 1, R = (60 + k * 60) * DPR;
-            const g = ctx.createRadialGradient(gx, y, 0, gx, y, R);
-            g.addColorStop(0, 'rgba(245,200,66,' + (0.35 * k + (released ? 0.25 : 0)) + ')'); g.addColorStop(1, 'rgba(245,200,66,0)');
-            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(gx, y, R, 0, Math.PI * 2); ctx.fill();
-          }
-          ctx.globalCompositeOperation = 'source-over';
-          raf = requestAnimationFrame(draw);
-        };
-        const io = new IntersectionObserver((en) => { inView = en[0].isIntersecting; if (inView && pinned && !raf) raf = requestAnimationFrame(draw); }, { threshold: 0 });
-        io.observe(sec);
-        const all = () => { decide(); layout(); update(); if (inView && pinned && !raf) raf = requestAnimationFrame(draw); };
-        window.addEventListener('resize', all);
-        window.addEventListener('scroll', update, { passive: true });
-        window.addEventListener('load', all);
-        all();
-      })();
-
       // scroll parallax variable for the hero
       const setSy = () => document.documentElement.style.setProperty('--sy', Math.min(window.scrollY, 900));
       if (!reduce) { window.addEventListener('scroll', setSy, { passive: true }); setSy(); }
@@ -1211,7 +1045,7 @@
         });
         area.addEventListener('pointerleave', () => { target.style.setProperty('--rx', '0deg'); target.style.setProperty('--ry', '0deg'); });
       };
-      tilt(document.querySelector('.hero-visual'), document.getElementById('brief'), 12);
+      tilt(document.querySelector('.hero-visual'), document.getElementById('brief-card'), 12);
       document.querySelectorAll('.card, .step, .sec-item').forEach((el) => tilt(el, el, 7));
 
       // starfield + occasional meteors
@@ -1300,82 +1134,74 @@
         });
       });
 
-      // hero brief card: a tiny approval demo
-      const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
-      document.getElementById('brief-day').textContent = days[new Date().getDay()];
-      const queue = [
-        { type: 'EMAIL DRAFT', subject: 'Re: Spring partnership · Dana Whitfield', body: "Hi Dana, thank you for your patience. I'd love to move forward with the spring pilot. Would Thursday at 10 work for a 20-minute call?", done: 'Approved · sent 9:14 AM · logged' },
-        { type: 'CALENDAR CHANGE', subject: 'Move board prep to Wednesday 9:30 AM', body: 'Frees your Tuesday afternoon for the family. MŌNAI will notify the three attendees and attach the updated agenda.', done: 'Approved · 3 invites updated · logged' },
-        { type: 'FOLLOW-UP', subject: 'Nudge: proposal to Grace Community', body: 'It has been 6 days with no reply. A warm two-line check-in, in your voice, asking if they need anything else to decide.', done: 'Approved · sent 9:16 AM · logged' },
-        { type: 'POST DRAFT', subject: 'Newsletter: April update', body: 'A short, encouraging note to your list with the three wins from this month and one clear invitation to reply.', done: 'Approved · scheduled 8:00 AM · logged' }
-      ];
-      let qi = 0, actions = 0, busy = false;
-      const item = document.getElementById('brief-item');
-      const render = (q) => {
-        document.getElementById('bi-type').textContent = q.type;
-        document.getElementById('bi-subject').textContent = q.subject;
-        document.getElementById('bi-body').textContent = q.body;
-        document.getElementById('bi-done-text').textContent = q.done;
-      };
-      const next = () => {
-        qi = (qi + 1) % queue.length;
-        item.classList.remove('done', 'swap');
-        void item.offsetWidth;
-        render(queue[qi]);
-        item.classList.add('swap');
-        busy = false;
-      };
-      document.getElementById('bi-approve').addEventListener('click', () => {
-        if (busy) return; busy = true;
-        actions++;
-        document.getElementById('brief-log').textContent = 'AUDIT LOG · ' + actions + (actions === 1 ? ' ACTION' : ' ACTIONS') + ' TODAY';
-        item.classList.add('done');
-        setTimeout(next, reduce ? 600 : 1500);
-      });
-      document.getElementById('bi-edit').addEventListener('click', () => { if (!busy) { busy = true; next(); } });
 
-      // waitlist form
-      document.getElementById('wl-form').addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const btn = document.getElementById('wl-submit');
-        const msg = document.getElementById('wl-msg');
-        const email = document.getElementById('email').value.trim();
-        const first = document.getElementById('first_name').value.trim();
-        msg.className = 'wl-msg';
-        msg.textContent = '';
-        if (!first) { msg.className = 'wl-msg err'; msg.textContent = 'Please add your first name.'; document.getElementById('first_name').focus(); return; }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.className = 'wl-msg err'; msg.textContent = 'Please enter a valid email address.'; document.getElementById('email').focus(); return; }
-        btn.disabled = true;
-        btn.textContent = 'Sending...';
-        try {
-          const payload = {
-            first_name: first,
-            last_name: document.getElementById('last_name').value,
-            email: email,
-            role: document.getElementById('role').value,
-            source: 'monai-landing',
-          };
-          const res = await fetch('https://api.base44.com/api/apps/6a029d2b5cc37d5b54f861bf/functions/monaiWaitlist', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-          });
-          const data = await res.json();
-          if (data.ok) {
-            msg.className = 'wl-msg ok';
-            msg.textContent = "You're on the list! It's only up from here.";
-            document.getElementById('wl-form').reset();
-          } else {
-            throw new Error(data.error || 'Something went wrong.');
+            // Pinned film: the ORRA section pins and scrubs with scroll. The signal
+      // travels the rail, gathers at the approval boundary, then releases.
+      (function film() {
+        const sec = document.getElementById('steps');
+        const stage = sec.querySelector('.stage'), inner = stage.querySelector('.wrap'), cv = document.getElementById('orra-scene');
+        const ctx = cv.getContext('2d');
+        const steps = [...sec.querySelectorAll('.step')], gate = sec.querySelector('.step.gate'), rail = sec.querySelector('.rail'), packet = sec.querySelector('.packet');
+        const note = sec.querySelector('.orra-note'), hint = document.getElementById('film-hint');
+        let pinned = false, p = 0, inView = false, raf = 0, W = 0, H = 0, DPR = 1, lastFrame = 0;
+        const flow = []; for (let i = 0; i < 120; i++) flow.push({ t: Math.random(), v: 0.004 + Math.random() * 0.005, y: (Math.random() - 0.5) * 26, s: 1 + Math.random() * 2.2, j: Math.random() * 6.28 });
+        const reachOf = (q) => q < 0.5 ? (q / 0.5) * 0.667 : q < 0.72 ? 0.667 : 0.667 + ((q - 0.72) / 0.28) * 0.333;
+        const decide = () => {
+          const ok = !reduce && window.innerWidth > 900 && inner.offsetHeight + 90 < window.innerHeight;
+          if (ok === pinned) return;
+          pinned = ok; sec.classList.toggle('pinned', ok);
+          if (!ok) { steps.forEach((st) => st.classList.remove('active', 'dim')); gate.classList.remove('approved'); packet.style.left = ''; note.classList.remove('show'); }
+        };
+        const layout = () => { if (!pinned) return; DPR = Math.min(1.5, window.devicePixelRatio || 1); W = cv.width = Math.floor(stage.clientWidth * DPR); H = cv.height = Math.floor(stage.clientHeight * DPR); };
+        const update = () => {
+          if (!pinned) return;
+          const top = sec.getBoundingClientRect().top + window.scrollY;
+          p = Math.max(0, Math.min(1, (window.scrollY - top) / (sec.offsetHeight - window.innerHeight)));
+          const idx = p < 0.25 ? 0 : p < 0.5 ? 1 : p < 0.78 ? 2 : 3;
+          steps.forEach((st, i) => { st.classList.toggle('active', i === idx); st.classList.toggle('dim', i !== idx); });
+          gate.classList.toggle('approved', p >= 0.72);
+          packet.style.left = (reachOf(p) * 100) + '%';
+          note.classList.toggle('show', p > 0.84);
+          hint.classList.toggle('hide', p > 0.06);
+        };
+        const draw = (now) => {
+          if (!pinned || !inView) { raf = 0; return; }
+          const dt = lastFrame ? Math.min(4, (now - lastFrame) / 16.7) : 1; lastFrame = now;
+          ctx.clearRect(0, 0, W, H);
+          const sr = stage.getBoundingClientRect(), rr = rail.getBoundingClientRect();
+          const x0 = (rr.left - sr.left) * DPR, x1 = (rr.right - sr.left) * DPR, y = (rr.top - sr.top + 1) * DPR, gx = x0 + (x1 - x0) * 0.667;
+          const reach = reachOf(p), holding = p >= 0.5 && p < 0.72, released = p >= 0.72;
+          ctx.globalCompositeOperation = 'lighter';
+          for (const q of flow) {
+            q.t += q.v * dt * (released ? 1.6 : 1);
+            if (reach < 0.02) continue;
+            if (q.t > reach) { if (holding && q.t > 0.667) q.t = 0.667 - Math.random() * 0.02; else q.t = Math.random() * reach; }
+            let x = x0 + (x1 - x0) * q.t, yy = y + q.y * DPR * Math.sin(q.j + q.t * 12) * 0.5;
+            if (holding && q.t > 0.62) { const k = (p - 0.5) / 0.22; x = gx + (Math.cos(q.j) * 16 - 12) * DPR * (1 - k * 0.5); yy = y + Math.sin(q.j + p * 20) * 18 * DPR; }
+            const gold = q.t >= 0.667 || (holding && q.t > 0.62);
+            const r = q.s * DPR * (gold ? 1.5 : 1);
+            const g = ctx.createRadialGradient(x, yy, 0, x, yy, r * 4);
+            g.addColorStop(0, gold ? 'rgba(255,224,138,.7)' : 'rgba(120,175,255,.55)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, yy, r * 4, 0, Math.PI * 2); ctx.fill();
           }
-        } catch (err) {
-          msg.className = 'wl-msg err';
-          msg.textContent = err.message || 'Something went wrong. Please try again.';
-        } finally {
-          btn.disabled = false;
-          btn.textContent = 'Join the Waitlist';
-        }
-      });
+          if (p >= 0.5) {
+            const k = holding ? (p - 0.5) / 0.22 : 1, R = (60 + k * 60) * DPR;
+            const g = ctx.createRadialGradient(gx, y, 0, gx, y, R);
+            g.addColorStop(0, 'rgba(245,200,66,' + (0.35 * k + (released ? 0.25 : 0)) + ')'); g.addColorStop(1, 'rgba(245,200,66,0)');
+            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(gx, y, R, 0, Math.PI * 2); ctx.fill();
+          }
+          ctx.globalCompositeOperation = 'source-over';
+          raf = requestAnimationFrame(draw);
+        };
+        const io = new IntersectionObserver((en) => { inView = en[0].isIntersecting; if (inView && pinned && !raf) raf = requestAnimationFrame(draw); }, { threshold: 0 });
+        io.observe(sec);
+        const all = () => { decide(); layout(); update(); if (inView && pinned && !raf) raf = requestAnimationFrame(draw); };
+        window.addEventListener('resize', all);
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('load', all);
+        all();
+      })();
+
     })();
   </script>
 </body>
